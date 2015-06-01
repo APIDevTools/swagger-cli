@@ -1,0 +1,54 @@
+{
+  "name": "swagger-cli",
+  "version": "0.0.1",
+  "description": "Command-line tool to parse, validate, and serve Swagger-based REST APIs",
+  "keywords": [
+    "swagger",
+    "rest",
+    "api",
+    "yaml",
+    "parse",
+    "parser",
+    "validate",
+    "validator",
+    "validation",
+    "serve",
+    "host"
+  ],
+  "contributors": [
+    {
+      "name": "James Messinger",
+      "url": "http://jamesmessinger.com"
+    },
+    {
+      "name": "Randall Krauskopf",
+      "url": "https://github.com/rkrauskopf"
+    }
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/BigstickCarpet/swagger-cli",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "jshint . --verbose && jscs . --verbose",
+    "test": "istanbul cover _mocha -- --recursive tests",
+    "mocha": "mocha --recursive tests",
+    "update-deps": "npm-check-updates -u && npm update",
+    "release": "npm run update-deps && npm run build && npm test && bump --prompt --tag --push --all && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BigstickCarpet/swagger-cli.git"
+  },
+  "devDependencies": {
+    "coveralls": "^2.11.2",
+    "istanbul": "^0.3.14",
+    "chai": "^2.3.0",
+    "jscs": "^1.13.1",
+    "jshint": "^2.8.0",
+    "mocha": "^2.2.5",
+    "npm-check-updates": "^1.5.1",
+    "sinon": "^1.14.1",
+    "version-bump-prompt": "^1.3.1"
+  },
+  "dependencies": {}
+}

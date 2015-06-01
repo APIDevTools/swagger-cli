@@ -1,0 +1,10 @@
+{
+  "@bigstickcarpet/generator-npm": {
+    "githubUsername": "BigstickCarpet",
+    "tests": true,
+    "env": {
+      "node": true,
+      "browser": false
+    }
+  }
+}
