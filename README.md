@@ -7,10 +7,13 @@ Swagger CLI
 [![Code Climate Score](https://img.shields.io/codeclimate/github/BigstickCarpet/swagger-cli.svg)](https://codeclimate.com/github/BigstickCarpet/swagger-cli)
 [![Dependencies](https://img.shields.io/david/BigstickCarpet/swagger-cli.svg)](https://david-dm.org/BigstickCarpet/swagger-cli)
 [![Inline docs](http://inch-ci.org/github/BigstickCarpet/swagger-cli.svg?branch=master&style=shields)](http://inch-ci.org/github/BigstickCarpet/swagger-cli)
-[![Downloads](https://img.shields.io/npm/dm/swagger-cli.svg)](https://www.npmjs.com/package/swagger-cli)
 
 [![npm](http://img.shields.io/npm/v/swagger-cli.svg)](https://www.npmjs.com/package/swagger-cli)
 [![License](https://img.shields.io/npm/l/swagger-cli.svg)](LICENSE)
+
+| Alpha Code!
+|-------------------------------------
+| Swagger CLI is still being written.  It's not ready to use yet.  Check back later, once we release v1.0.0
 
 
 Features
