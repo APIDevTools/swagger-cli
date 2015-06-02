@@ -29,7 +29,7 @@
   "homepage": "https://github.com/BigstickCarpet/swagger-cli",
   "main": "lib/index.js",
   "bin": {
-    "swagger": "lib/swagger-cli.js"
+    "swagger": "bin/swagger.js"
   },
   "scripts": {
     "build": "jshint . --verbose && jscs . --verbose",
