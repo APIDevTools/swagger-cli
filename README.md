@@ -41,16 +41,16 @@ swagger <command> [options] <filename>
 
 Commands:
     validate        Parses and validates a Swagger file
-    
+
     dereference     Dereferences all $ref pointers in a Swagger file
-    
+
     bundle          Bundles multiple Swagger files into a single file
-    
+
     serve           Serves a Swagger file via a built-in HTTP REST server
-    
+
 Options:
     -h, --help      Show help for any command
-    -v, --version   Output the CLI version number
+    -V, --version   Output the CLI version number
 ```
 
 
