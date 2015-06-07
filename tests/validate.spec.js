@@ -48,7 +48,6 @@ describe('swagger-cli validate command', function() {
     expect(spyCall.args[1][0]).to.equal('Validating file: myfakefile.yaml');
   });
 
-
   it('should successfully write a success message to the callback function when a valid swagger file is given', function() {
     var options = { resolveRefs: true, externalRefs: true};
 
