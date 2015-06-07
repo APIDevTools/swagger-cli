@@ -1,0 +1,60 @@
+description: an employee object
+type: object
+properties:
+  username:
+    type: string
+  password:
+    type: string
+    description: the encoded type
+  name:
+    type: object
+    description: Object containing employee first and last name definiton
+    properties:
+      first:
+        type: string
+        description: First Name of Employee
+      last:
+        type: string
+        description: Last Name of Employee
+  ssn:
+    type: string
+    description: Employee Social Security Number
+  dob:
+    type: string
+    description: ISO 8601 formatted string of the employees date of birth
+  hiredOn:
+    type: string
+    description: ISO 8601 formatted string when the employee was hired
+  terminatedOn:
+    type: string
+    description: ISO 8601 formatted string
+  email:
+    type: string
+    description: Email address of the employee
+  phone:
+    type: object
+    properties:
+      type:
+        type: string
+        description: What type of phone is it? (ex. Office, Mobile, Home)
+      number:
+        type: string
+  address:
+    type: object
+    properties:
+      street:
+        type: string
+      city:
+        type: string
+      state:
+        type: string
+      zip:
+        type: string
+  roles:
+    type: string
+    description:  The employment status (ex. salaried, full time, contractor)
+  department:
+    type: string
+    description: The department the employee is assigned to (ex. Accouting, HR)
+  gender:
+    type: string

@@ -1,0 +1,22 @@
+description: a project object
+type: object
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  department:
+    type: string
+  startedOn:
+    type: string
+    description: ISO 8601 formatted string
+  endedOn:
+    type: string
+    description: either null, or ISO 8601 formatted string
+  assigned:
+    type: array
+    description: array of employees assigned to the project
+    items:
+      type: string
+  description:
+    type: string
