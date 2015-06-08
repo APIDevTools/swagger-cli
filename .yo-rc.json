@@ -4,7 +4,9 @@
     "tests": true,
     "env": {
       "node": true,
-      "browser": false
+      "browser": false,
+      "yeoman": false,
+      "cordova": false
     }
   }
 }
