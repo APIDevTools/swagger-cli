@@ -37,7 +37,7 @@
     "istanbul": "^0.3.14",
     "coveralls": "^2.11.2",
     "mocha": "^2.2.5",
-    "chai": "^2.3.0",
+    "chai": "^3.0.0",
     "sinon": "^1.14.1",
     "jscs": "^1.13.1",
     "jshint": "^2.8.0",
@@ -47,8 +47,8 @@
   "dependencies": {
     "commander": "^2.8.1",
     "lodash": "^3.9.3",
-    "swagger-parser": "^2.4.1",
-    "swagger-server": "0.0.8"
+    "swagger-parser": "^2.4.2",
+    "swagger-server": "1.0.0-alpha"
   },
   "contributors": [
     {
