@@ -27,14 +27,14 @@
     "test": "istanbul cover _mocha -- --recursive tests",
     "mocha": "mocha --recursive tests",
     "update-deps": "npm-check-updates -u && npm update",
-    "release": "npm run update-deps && npm run build && npm test && bump --prompt --tag --push --all && npm publish"
+    "release": "npm run update-deps && npm run build && npm test && bump --prerelease --tag --push --all && npm publish"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/BigstickCarpet/swagger-cli.git"
   },
   "devDependencies": {
-    "istanbul": "^0.3.14",
+    "istanbul": "^0.3.15",
     "coveralls": "^2.11.2",
     "mocha": "^2.2.5",
     "chai": "^3.0.0",
@@ -51,7 +51,7 @@
     "commander": "^2.8.1",
     "lodash": "^3.9.3",
     "swagger-parser": "^2.4.2",
-    "swagger-server": "1.0.0-alpha"
+    "swagger-server": "^1.0.0-alpha.7"
   },
   "contributors": [
     {

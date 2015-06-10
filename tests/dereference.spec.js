@@ -64,7 +64,7 @@ describe('swagger-cli dereference command', function() {
     expect(spyCall.args[0]).to.equal(null);
     expect(spyCall.args[1][0]).to.equal('Dereferencing file: myfakefile.yaml');
     expect(spyCall.args[1][1]).to.equal('File parsed successfully');
-    expect(spyCall.args[1][2]).to.equal(fakeMetadata);
+    expect(spyCall.args[1][2]).to.equal(JSON.stringify(fakeMetadata));
 
   });
 

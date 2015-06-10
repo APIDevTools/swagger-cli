@@ -55,5 +55,3 @@ paths:
             type: string
           examples:
             text/plain: Unauthorized
-
-

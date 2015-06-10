@@ -5,24 +5,13 @@ var expect  = require('chai').expect,
     swaggerCli = null,
     cbSpy   = null,
     appStub = null,
-    appMock = null,
     app     = null;
 
 describe('swagger-cli serve command', function() {
   beforeEach(function() {
 
-    //TODO: Turn this into a mock?
     app = { listen: function() {} };
     appStub = sinon.stub(app, 'listen');
-
-    //Mock attempt
-    //app = {
-    //  listen: function(portNum , cb) {
-    //    cb('This is an error');
-    //  }
-    //};
-    //
-    //appMock = sinon.mock(app);
 
     var swaggerServerMock = function() {
       return app;
@@ -35,7 +24,6 @@ describe('swagger-cli serve command', function() {
     });
 
     mockery.registerMock('swagger-server', swaggerServerMock);
-    //mockery.registerMock('swagger-server', swaggerServerMock);
 
     swaggerCli = require('../');
 
@@ -65,11 +53,39 @@ describe('swagger-cli serve command', function() {
     sinon.assert.calledWith(app.listen, 1234);
   });
 
-  //it('should set the default port number to 8000 when no portNumber options is set', function() {
-  //  swaggerCli.serve('fakefile.yaml', {}, cbSpy);
-  //
-  //  sinon.assert.calledOnce(app.listen);
-  //  sinon.assert.calledWith(app.listen, 8000);
-  //});
+  it('should set the default port number to 8000 when no portNumber options is set', function() {
+    swaggerCli.serve('fakefile.yaml', {}, cbSpy);
 
+    sinon.assert.calledOnce(app.listen);
+    sinon.assert.calledWith(app.listen, 8000);
+  });
+
+  it('should set the default port number to 8000 when no portNumber options is set', function() {
+    swaggerCli.serve('fakefile.yaml', {}, cbSpy);
+
+    sinon.assert.calledOnce(app.listen);
+    sinon.assert.calledWith(app.listen, 8000);
+  });
+
+  it('app.listen should call the callback function with an error if one occurs on the listen call', function() {
+    var myErr = new Error('This is an error');
+    app.listen.callsArgWith(1, myErr);
+    swaggerCli.serve('fakefile.yaml', {}, cbSpy);
+
+    var spyCall = cbSpy.getCall(0);
+    expect(spyCall.args[0].message).to.equal('This is an error');
+    expect(spyCall.args[1][0]).to.equal('Starting swagger serve with fakefile.yaml');
+    sinon.assert.calledOnce(cbSpy);
+  });
+
+  it('app.listen should call the callback function with successful output when a valid swagger file is used', function() {
+    app.listen.callsArgWith(1, null);
+    swaggerCli.serve('fakefile.yaml', {}, cbSpy);
+
+    var spyCall = cbSpy.getCall(0);
+    expect(spyCall.args[0]).to.equal(null);
+    expect(spyCall.args[1][0]).to.equal('Starting swagger serve with fakefile.yaml');
+    expect(spyCall.args[1][1]).to.equal('Your REST API is now running at http://localhost:8000\n');
+    sinon.assert.calledOnce(cbSpy);
+  });
 });
