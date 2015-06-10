@@ -3,7 +3,6 @@
 
 var program = require('commander'),
     chalk   = require('chalk'),
-    util    = require('util'),
     api     = require('../');
 
 //TODO: Comments
@@ -58,11 +57,9 @@ program.parse(process.argv);
 function outputErrorHandler(err, data) {
   if (data instanceof Array) {
     console.log(data.join('\n'));
-  }
-
-  if(err) {
-    console.log(data.join('\n'));
-    console.error(chalk.red(err.message));
-    process.exit(1);
+    if(err) {
+      console.error(chalk.red(err.message));
+      process.exit(1);
+    }
   }
 }
