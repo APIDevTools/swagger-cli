@@ -5,13 +5,8 @@ var program = require('commander'),
     chalk   = require('chalk'),
     api     = require('../');
 
-//TODO: Comments
 program.version(require('../package').version);
 
-//default parse, all default parse options are set to true
-//options to give user --> --no-resolve-$refs, --no-external-$refs -->
-// Output validation success to stdout, exit code 0
-// Output validation errors to stderr, exit code 1
 program.command('validate <filename>')
   .description('Parses and validates a Swagger file')
   .option('-R, --no-resolve-refs', 'Do not resolve any $ref pointers')
@@ -20,11 +15,6 @@ program.command('validate <filename>')
     api.validate(filename, options, outputErrorHandler);
   });
 
-//turn off validateSchema and strictValidation
-// options to give user --> --no-external-$refs
-// Output the dereferenced JSON to stdout, exit code 0
-// If -o, --outfile <filename> is specified, then output JSON to that file
-// Output errors to stderr, exit code 2
 program.command('dereference')
   .description('Dereferences all $ref pointers in a Swagger file')
   .option('-D, --no-external-refs', 'Do not resolve any external $ref pointers')
@@ -39,10 +29,6 @@ program.command('dereference')
 // Output errors to stderr, exit code 2
 //program.command('bundle', 'Bundles multiple Swagger files into a single file')
 
-//regular Swagger Serve, options to give to user?
-// options to give user --> --no-ui, --no-mocks
-// stdio inherit
-// exit code inherit
 program.command('serve <filename>')
   .description('Serves a Swagger file via a built-in HTTP REST server')
   .option('-u, --no-ui', 'Launch swagger server with no UI')
@@ -55,6 +41,8 @@ program.command('serve <filename>')
 program.parse(process.argv);
 
 function outputErrorHandler(err, data) {
+  //the data output is expected to be an array where each index is an output entry
+  //that will be written to the console.
   if (data instanceof Array) {
     console.log(data.join('\n'));
     if (err) {

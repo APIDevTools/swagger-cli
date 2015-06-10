@@ -13,6 +13,7 @@ describe('swagger-cli serve command', function() {
     app = {listen: function() {}};
     appStub = sinon.stub(app, 'listen');
 
+    //Want to load a mock swagger-server module to pass my app spy into
     var swaggerServerMock = function() {
       return app;
     };
@@ -32,7 +33,6 @@ describe('swagger-cli serve command', function() {
   });
 
   afterEach(function() {
-    //appMock.restore();
     app.listen.restore()
   });
 
@@ -44,11 +44,8 @@ describe('swagger-cli serve command', function() {
 
     var options = {portNumber : 1234};
 
-    //app.listen.callsArgWith(1);
     swaggerCli.serve('fakefile.yaml', options, cbSpy);
 
-    //appMock.expects('listen').once();
-    //appMock.verify();
     sinon.assert.calledOnce(app.listen);
     sinon.assert.calledWith(app.listen, 1234);
   });

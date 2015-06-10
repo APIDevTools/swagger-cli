@@ -83,7 +83,6 @@ describe('swagger-cli dereference command', function() {
     expect(spyCall.args[1][1]).to.equal('File parsed successfully');
     expect(spyCall.args[1][2]).to.equal('Writing parsed data to file test.js');
     expect(spyCall.args[1][3]).to.equal('Parsed data successfully written to file');
-
   });
 
   it('should write an error to the callback when a specified file to write the metadata results to fails', function() {
@@ -102,7 +101,6 @@ describe('swagger-cli dereference command', function() {
     var spyCall = cbSpy.getCall(0);
     expect(spyCall.args[0].message).to.equal('this is an error');
     expect(spyCall.args[1][0]).to.equal('Dereferencing file: myfakefile.yaml');
-
   });
 
 });
