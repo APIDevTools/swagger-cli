@@ -10,7 +10,7 @@ var expect  = require('chai').expect,
 describe('swagger-cli serve command', function() {
   beforeEach(function() {
 
-    app = { listen: function() {} };
+    app = {listen: function() {}};
     appStub = sinon.stub(app, 'listen');
 
     var swaggerServerMock = function() {
@@ -78,14 +78,16 @@ describe('swagger-cli serve command', function() {
     sinon.assert.calledOnce(cbSpy);
   });
 
-  it('app.listen should call the callback function with successful output when a valid swagger file is used', function() {
-    app.listen.callsArgWith(1, null);
-    swaggerCli.serve('fakefile.yaml', {}, cbSpy);
+  it('app.listen should call the callback function with successful output when a valid swagger file is used',
+    function() {
+      app.listen.callsArgWith(1, null);
+      swaggerCli.serve('fakefile.yaml', {}, cbSpy);
 
-    var spyCall = cbSpy.getCall(0);
-    expect(spyCall.args[0]).to.equal(null);
-    expect(spyCall.args[1][0]).to.equal('Starting swagger serve with fakefile.yaml');
-    expect(spyCall.args[1][1]).to.equal('Your REST API is now running at http://localhost:8000\n');
-    sinon.assert.calledOnce(cbSpy);
-  });
+      var spyCall = cbSpy.getCall(0);
+      expect(spyCall.args[0]).to.equal(null);
+      expect(spyCall.args[1][0]).to.equal('Starting swagger serve with fakefile.yaml');
+      expect(spyCall.args[1][1]).to.equal('Your REST API is now running at http://localhost:8000\n');
+      sinon.assert.calledOnce(cbSpy);
+    }
+  );
 });
