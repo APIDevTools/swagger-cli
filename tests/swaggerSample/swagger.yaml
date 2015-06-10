@@ -1,0 +1,59 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: test-ionic
+  description: >
+    test-ionic: An Ionic project
+
+host: localhost:8000
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+
+# ========================================================
+# Type Definitions
+# ========================================================
+definitions:
+  employee: &employee
+    $ref: models/employee.yaml
+  project: &project
+    $ref: models/project.yaml
+
+paths:
+  /employees:
+    get:
+      summary: retrieve a list of employees
+      responses:
+        200:
+          description: employees retrieved successfully
+          schema:
+            type: array
+            items:
+              type: *employee
+        401:
+          description: Unauthorized User
+          schema:
+            type: string
+          examples:
+            text/plain: Unauthorized
+  /projects:
+    get:
+      summary: retrieve a list of all projects
+      responses:
+        200:
+          description: projects retrieved successfully
+          schema:
+            type: array
+            items:
+              type: *project
+        401:
+          description: Unauthorized User
+          schema:
+            type: string
+          examples:
+            text/plain: Unauthorized
+
+
