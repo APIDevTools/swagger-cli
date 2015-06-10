@@ -2,9 +2,10 @@
 'use strict';
 
 var program = require('commander'),
+    chalk   = require('chalk'),
+    util    = require('util'),
     api     = require('../');
 
-//TODO: Unit Tests
 //TODO: Comments
 program.version(require('../package').version);
 
@@ -16,7 +17,9 @@ program.command('validate <filename>')
   .description('Parses and validates a Swagger file')
   .option('-R, --no-resolve-refs', 'Do not resolve any $ref pointers')
   .option('-X, --no-external-refs', 'Do not resolve any external $ref pointers')
-  .action(api.validate);
+  .action(function(filename, options) {
+    api.validate(filename, options, outputErrorHandler);
+  });
 
 //turn off validateSchema and strictValidation
 // options to give user --> --no-external-$refs
@@ -25,8 +28,11 @@ program.command('validate <filename>')
 // Output errors to stderr, exit code 2
 program.command('dereference')
   .description('Dereferences all $ref pointers in a Swagger file')
-  .option('-d, --no-external-refs', 'Do not resolve any external $ref pointers')
-  .option('-o, --output-file [filename]', 'Output JSON to file name specified');
+  .option('-D, --no-external-refs', 'Do not resolve any external $ref pointers')
+  .option('-o, --output-file [filename]', 'Output JSON to file name specified')
+  .action(function(filename, options){
+    api.dereference(filename, options, outputErrorHandler);
+  });
 
 // DOESN'T EXIST YET
 // Output the dereferenced JSON to stdout, exit code 0
@@ -38,10 +44,25 @@ program.command('bundle', 'Bundles multiple Swagger files into a single file')
 // options to give user --> --no-ui, --no-mocks
 // stdio inherit
 // exit code inherit
-program.command('serve')
+program.command('serve <filename>')
   .description('Serves a Swagger file via a built-in HTTP REST server')
   .option('-u, --no-ui', 'Launch swagger server with no UI')
   .option('-m, --no-mocks', 'Launch server without any mocks')
-  .option('-p, --port-number <portnumber>', 'specify port to run Swagger Server on');
+  .option('-p, --port-number <portnumber>', 'specify port to run Swagger Server on')
+  .action(function(filename, options) {
+    api.serve(filename, options, outputErrorHandler);
+  });
 
 program.parse(process.argv);
+
+function outputErrorHandler(err, data) {
+  if (data instanceof Array) {
+    console.log(data.join('\n'));
+  }
+
+  if(err) {
+    console.log(data.join('\n'));
+    console.error(chalk.red(err.message));
+    process.exit(1);
+  }
+}
