@@ -1,6 +1,6 @@
 {
-  // JSHint Configuration File
-  // See http://jshint.com/docs/ for more details
+  // JSHint config
+  // http://jshint.com/docs/options/
 
   "maxerr"        : 500,      // {int} Maximum error before stopping
 
@@ -82,4 +82,5 @@
     "expect"      : false,    // Chai
     "sinon"       : false     // Sinon
   }
-} // test
+}
+
