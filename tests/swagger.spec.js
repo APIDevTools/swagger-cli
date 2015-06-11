@@ -1,5 +1,6 @@
 'use strict';
 var fs = require('fs'),
+  os     = require('os'),
   expect = require('chai').expect,
   path   = require('path'),
   _      = require('lodash'),
@@ -69,8 +70,13 @@ describe('swagger-cli dereference command', function() {
       return item !== '';
     });
 
-    var successDereference = require('./swaggerSample/testFiles/successDereference.json');
-
+    var successDereference = null;
+    if(os.platform() === 'darwin') {
+      successDereference = require('./swaggerSample/testFiles/successDereferenceDarwin.json');
+    }
+    else {
+      successDereference = require('./swaggerSample/testFiles/successDereferenceWin32.json');
+    }
     expect(outputArray[0]).to.equal('Dereferencing file: tests/swaggerSample/swagger.yaml');
     expect(outputArray[1]).to.equal('File parsed successfully');
     //Will only compare the $refs property, file comparisons differ between Windows and Linux environments
@@ -85,7 +91,14 @@ describe('swagger-cli dereference command', function() {
       return item !== '';
     });
 
-    var successDereference = require('./swaggerSample/testFiles/noExternalDereference.json');
+    var successDereference = null;
+
+    if(os.platform() === 'darwin') {
+      successDereference = require('./swaggerSample/testFiles/noExternalDereferenceDarwin.json');
+    }
+    else {
+      successDereference = require('./swaggerSample/testFiles/noExternalDereferenceWin32.json');
+    }
 
     expect(outputArray[0]).to.equal('Dereferencing file: tests/swaggerSample/swagger.yaml');
     expect(outputArray[1]).to.equal('File parsed successfully');
@@ -114,7 +127,13 @@ describe('swagger-cli dereference command', function() {
         'Parsed data successfully written to file'
       ]);
 
-      var successDereference = require('./swaggerSample/testFiles/successDereference.json')
+      var successDereference = null;
+      if(os.platform() === 'darwin') {
+        successDereference = require('./swaggerSample/testFiles/successDereferenceDarwin.json');
+      }
+      else {
+        successDereference = require('./swaggerSample/testFiles/successDereferenceWin32.json');
+      }
       expect(require('./swaggerSample/test.json').$refs).to.deep.equal(successDereference.$refs);
 
       //remove potential
