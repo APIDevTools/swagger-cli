@@ -1,6 +1,10 @@
 #!/usr/bin/env node
 'use strict';
 
+/**
+ * Sets up the various CLI commands using Commander
+ */
+
 var program = require('commander'),
     chalk   = require('chalk'),
     api     = require('../');

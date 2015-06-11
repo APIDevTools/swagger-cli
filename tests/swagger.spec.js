@@ -13,9 +13,7 @@ describe('swagger-cli dereference command', function() {
     var returnBuffer = execSync(swaggerCmd + ' validate tests/swaggerSample/swagger.yaml');
     var outputArray = returnBuffer.toString().split('\n');
 
-    outputArray = _.remove(outputArray, function(item) {
-      return item !== '';
-    });
+    outputArray = _.dropRight(outputArray);
 
     expect(outputArray).to.deep.equal([
       'Validating file: tests/swaggerSample/swagger.yaml',
@@ -26,9 +24,7 @@ describe('swagger-cli dereference command', function() {
   it('running the \'swagger validate -R\' command on a valid swagger file passes successfully', function() {
     var returnBuffer = execSync(swaggerCmd + ' validate -R tests/swaggerSample/swagger.yaml');
     var outputArray = returnBuffer.toString().split('\n');
-    outputArray = _.remove(outputArray, function(item) {
-      return item !== '';
-    });
+    outputArray = _.dropRight(outputArray);
 
     expect(outputArray).to.deep.equal([
       'Validating file: tests/swaggerSample/swagger.yaml',
@@ -39,10 +35,7 @@ describe('swagger-cli dereference command', function() {
   it('running the \'swagger validate -X\' command on a valid swagger file passes successfully', function() {
     var returnBuffer = execSync(swaggerCmd + ' validate -R tests/swaggerSample/swagger.yaml');
     var outputArray = returnBuffer.toString().split('\n');
-
-    outputArray = _.remove(outputArray, function(item) {
-      return item !== '';
-    });
+    outputArray = _.dropRight(outputArray);
 
     expect(outputArray).to.deep.equal([
       'Validating file: tests/swaggerSample/swagger.yaml',
@@ -65,13 +58,10 @@ describe('swagger-cli dereference command', function() {
   it('running the \'swagger dereference\' command on a valid swagger file passes successfully', function() {
     var returnBuffer = execSync(swaggerCmd + ' dereference tests/swaggerSample/swagger.yaml');
     var outputArray = returnBuffer.toString().split('\n');
-
-    outputArray = _.remove(outputArray, function(item) {
-      return item !== '';
-    });
+    outputArray = _.dropRight(outputArray);
 
     var successDereference = null;
-    if(os.platform() === 'darwin') {
+    if (os.platform() === 'darwin') {
       successDereference = require('./swaggerSample/testFiles/successDereferenceDarwin.json');
     }
     else {
@@ -86,14 +76,11 @@ describe('swagger-cli dereference command', function() {
   it('running the \'swagger dereference -D\' command on a valid swagger file passes successfully', function() {
     var returnBuffer = execSync('swagger dereference -D tests/swaggerSample/swagger.yaml');
     var outputArray = returnBuffer.toString().split('\n');
-
-    outputArray = _.remove(outputArray, function(item) {
-      return item !== '';
-    });
+    outputArray = _.dropRight(outputArray);
 
     var successDereference = null;
 
-    if(os.platform() === 'darwin') {
+    if (os.platform() === 'darwin') {
       successDereference = require('./swaggerSample/testFiles/noExternalDereferenceDarwin.json');
     }
     else {
@@ -115,10 +102,7 @@ describe('swagger-cli dereference command', function() {
 
       var returnBuf = execSync('swagger dereference -o tests/swaggerSample/test.json tests/swaggerSample/swagger.yaml');
       var outputArray = returnBuf.toString().split('\n');
-
-      outputArray = _.remove(outputArray, function(item) {
-        return item !== '';
-      });
+      outputArray = _.dropRight(outputArray);
 
       expect(outputArray).to.deep.equal([
         'Dereferencing file: tests/swaggerSample/swagger.yaml',
@@ -128,7 +112,7 @@ describe('swagger-cli dereference command', function() {
       ]);
 
       var successDereference = null;
-      if(os.platform() === 'darwin') {
+      if (os.platform() === 'darwin') {
         successDereference = require('./swaggerSample/testFiles/successDereferenceDarwin.json');
       }
       else {
