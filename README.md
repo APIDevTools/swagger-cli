@@ -41,9 +41,7 @@ Usage
 swagger <command> [options] <filename>
 
 Commands:
-    validate        Parses and validates a Swagger file
-
-    dereference     Dereferences all $ref pointers in a Swagger file
+    validate        Validates a Swagger file (and any $referenced files)
 
     bundle          Bundles multiple Swagger files into a single file
 
