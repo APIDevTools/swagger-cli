@@ -7,6 +7,24 @@
   ],
   "urls": [],
   "$refs": {
+    "department": {
+      "type": "string",
+      "enum": [
+        "Marketing",
+        "Sales",
+        "Human Resources",
+        "Accounting"
+      ]
+    },
+    "#/definitions/department": {
+      "type": "string",
+      "enum": [
+        "Marketing",
+        "Sales",
+        "Human Resources",
+        "Accounting"
+      ]
+    },
     "models/project.yaml": {
       "description": "a project object",
       "type": "object",

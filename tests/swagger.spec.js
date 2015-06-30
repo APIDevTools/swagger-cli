@@ -65,7 +65,7 @@ describe('swagger-cli commands', function() {
       successDereference = require('./swaggerSample/testFiles/successBundleDarwin.json');
     }
     else {
-      successDereference = require('./swaggerSample/testFiles/successDereferenceWin32.json');
+      successDereference = require('./swaggerSample/testFiles/successBundleWin32.json');
     }
     expect(outputArray[0]).to.equal('Bundling file: tests/swaggerSample/swagger.yaml');
     expect(outputArray[1]).to.equal('File parsed successfully');
@@ -73,7 +73,7 @@ describe('swagger-cli commands', function() {
     expect(JSON.parse(outputArray[2]).$refs).to.deep.equal(successDereference.$refs);
   });
 
-  it('running the \'swagger bundle -D\' command on a valid swagger file passes successfully', function() {
+  it('running the \'swagger bundle -d\' command on a valid swagger file passes successfully', function() {
     var returnBuffer = execSync('swagger bundle -d tests/swaggerSample/swagger.yaml');
     var outputArray = returnBuffer.toString().split('\n');
     outputArray = _.dropRight(outputArray);
@@ -84,7 +84,7 @@ describe('swagger-cli commands', function() {
       successDereference = require('./swaggerSample/testFiles/dereferenceInternalRefsBundleDarwin.json');
     }
     else {
-      successDereference = require('./swaggerSample/testFiles/noExternalDereferenceWin32.json');
+      successDereference = require('./swaggerSample/testFiles/dereferenceInternalRefsBundleWin32.json');
     }
 
     expect(outputArray[0]).to.equal('Bundling file: tests/swaggerSample/swagger.yaml');
@@ -116,7 +116,7 @@ describe('swagger-cli commands', function() {
         successDereference = require('./swaggerSample/testFiles/successBundleDarwin.json');
       }
       else {
-        successDereference = require('./swaggerSample/testFiles/successDereferenceWin32.json');
+        successDereference = require('./swaggerSample/testFiles/successBundleWin32.json');
       }
       expect(require('./swaggerSample/test.json').$refs).to.deep.equal(successDereference.$refs);
 
