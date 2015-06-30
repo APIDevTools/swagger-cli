@@ -6,7 +6,7 @@ var swaggerCli = require('../'),
   sinon  = require('sinon'),
   cbSpy = null;
 
-describe('swagger-cli dereference command', function() {
+describe('swagger-cli bundle command', function() {
   beforeEach(function() {
     //Mock the stderr output so that no actual expected error output gets written to the console
     Object.defineProperty(process, 'stderr', {writable: true});
@@ -25,8 +25,8 @@ describe('swagger-cli dereference command', function() {
     fs.writeFile.restore();
   });
 
-  it('should export the `dereference` function', function() {
-    expect(swaggerCli.dereference).to.be.a('function');
+  it('should export the `bundle` function', function() {
+    expect(swaggerCli.bundle).to.be.a('function');
   });
 
   it('should pass an error to the callback when an invalid file path is given', function() {
@@ -34,7 +34,7 @@ describe('swagger-cli dereference command', function() {
 
     var myErr = new Error('This is an error');
     parser.parse.callsArgWith(2, myErr);
-    swaggerCli.dereference('myfakefile.yaml', options, cbSpy);
+    swaggerCli.bundle('myfakefile.yaml', options, cbSpy);
 
     sinon.assert.calledOnce(parser.parse);
     sinon.assert.calledWith(parser.parse, 'myfakefile.yaml');
@@ -42,7 +42,7 @@ describe('swagger-cli dereference command', function() {
     //Validate that the spy has the expect variables passed into the callback function
     var spyCall = cbSpy.getCall(0);
     expect(spyCall.args[0].message).to.equal('This is an error');
-    expect(spyCall.args[1][0]).to.equal('Dereferencing file: myfakefile.yaml');
+    expect(spyCall.args[1][0]).to.equal('Bundling file: myfakefile.yaml');
   });
 
   it('should successfully write a metadata object to callback when a valid swagger file is given and no -o option',
@@ -51,7 +51,7 @@ describe('swagger-cli dereference command', function() {
 
       var fakeMetadata = {'test': 'test123'};
       parser.parse.callsArgWith(2, '', '', fakeMetadata);
-      swaggerCli.dereference('myfakefile.yaml', options, cbSpy);
+      swaggerCli.bundle('myfakefile.yaml', options, cbSpy);
 
       sinon.assert.calledOnce(parser.parse);
       sinon.assert.calledWith(parser.parse, 'myfakefile.yaml', sinon.match.object);
@@ -59,7 +59,7 @@ describe('swagger-cli dereference command', function() {
       //Validate that the spy has the expect variables passed into the callback function
       var spyCall = cbSpy.getCall(0);
       expect(spyCall.args[0]).to.equal(null);
-      expect(spyCall.args[1][0]).to.equal('Dereferencing file: myfakefile.yaml');
+      expect(spyCall.args[1][0]).to.equal('Bundling file: myfakefile.yaml');
       expect(spyCall.args[1][1]).to.equal('File parsed successfully');
       expect(spyCall.args[1][2]).to.equal(JSON.stringify(fakeMetadata));
     }
@@ -72,14 +72,14 @@ describe('swagger-cli dereference command', function() {
 
     parser.parse.callsArgWith(2, '', '', fakeMetaData);
     fs.writeFile.callsArgWith(2, '');
-    swaggerCli.dereference('myfakefile.yaml', options, cbSpy);
+    swaggerCli.bundle('myfakefile.yaml', options, cbSpy);
 
     sinon.assert.calledOnce(parser.parse);
     sinon.assert.calledWith(parser.parse, 'myfakefile.yaml', sinon.match.object);
 
     var spyCall = cbSpy.getCall(0);
     expect(spyCall.args[0]).to.equal(null);
-    expect(spyCall.args[1][0]).to.equal('Dereferencing file: myfakefile.yaml');
+    expect(spyCall.args[1][0]).to.equal('Bundling file: myfakefile.yaml');
     expect(spyCall.args[1][1]).to.equal('File parsed successfully');
     expect(spyCall.args[1][2]).to.equal('Writing parsed data to file test.js');
     expect(spyCall.args[1][3]).to.equal('Parsed data successfully written to file');
@@ -93,14 +93,14 @@ describe('swagger-cli dereference command', function() {
 
     parser.parse.callsArgWith(2, '', '', fakeMetaData);
     fs.writeFile.callsArgWith(2, error);
-    swaggerCli.dereference('myfakefile.yaml', options, cbSpy);
+    swaggerCli.bundle('myfakefile.yaml', options, cbSpy);
 
     sinon.assert.calledOnce(parser.parse);
     sinon.assert.calledWith(parser.parse, 'myfakefile.yaml', sinon.match.object);
 
     var spyCall = cbSpy.getCall(0);
     expect(spyCall.args[0].message).to.equal('this is an error');
-    expect(spyCall.args[1][0]).to.equal('Dereferencing file: myfakefile.yaml');
+    expect(spyCall.args[1][0]).to.equal('Bundling file: myfakefile.yaml');
   });
 
 });

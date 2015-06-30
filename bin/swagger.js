@@ -24,7 +24,7 @@ program.command('bundle')
   .option('-d, --dereference', 'Dereference all $ref pointers (not just external ones)')
   .option('-o, --output-file [filename]', 'Output JSON to file name specified')
   .action(function(filename, options) {
-    api.dereference(filename, options, outputErrorHandler);
+    api.bundle(filename, options, outputErrorHandler);
   });
 
 program.command('serve <filename>')

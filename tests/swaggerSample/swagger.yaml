@@ -21,6 +21,13 @@ definitions:
     $ref: models/employee.yaml
   project: &project
     $ref: models/project.yaml
+  department:
+    type: string
+    enum:
+      - Marketing
+      - Sales
+      - Human Resources
+      - Accounting
 
 paths:
   /employees:
@@ -55,3 +62,14 @@ paths:
             type: string
           examples:
             text/plain: Unauthorized
+  /departments:
+    get:
+      summary: retrieve a list of departments
+      responses:
+        200:
+          description: departments retrieved successfully
+          schema:
+            type: array
+            items:
+              type:
+                $ref: department
