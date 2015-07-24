@@ -2,11 +2,11 @@ Swagger CLI
 ============================
 #### Command-line tool to parse, validate, and host Swagger-based REST APIs
 
-[![Build Status](https://img.shields.io/travis/BigstickCarpet/swagger-cli.svg)](https://travis-ci.org/BigstickCarpet/swagger-cli)
-[![Dependencies](https://img.shields.io/david/BigstickCarpet/swagger-cli.svg)](https://david-dm.org/BigstickCarpet/swagger-cli)
-[![Coverage Status](https://img.shields.io/coveralls/BigstickCarpet/swagger-cli.svg)](https://coveralls.io/r/BigstickCarpet/swagger-cli)
-[![Code Climate Score](https://img.shields.io/codeclimate/github/BigstickCarpet/swagger-cli.svg)](https://codeclimate.com/github/BigstickCarpet/swagger-cli)
-[![Codacy Score](http://img.shields.io/codacy/b20026f43c2d4a149088ba0ad2ab6355.svg)](https://www.codacy.com/public/jamesmessinger/swagger-cli)
+[![Build Status](https://api.travis-ci.org/BigstickCarpet/swagger-cli.svg)](https://travis-ci.org/BigstickCarpet/swagger-cli)
+[![Dependencies](https://david-dm.org/BigstickCarpet/swagger-cli.svg)](https://david-dm.org/BigstickCarpet/swagger-cli)
+[![Coverage Status](https://coveralls.io/repos/BigstickCarpet/swagger-cli/badge.svg?branch=master&service=github)](https://coveralls.io/r/BigstickCarpet/swagger-cli)
+[![Code Climate Score](https://codeclimate.com/github/BigstickCarpet/swagger-cli/badges/gpa.svg)](https://codeclimate.com/github/BigstickCarpet/swagger-cli)
+[![Codacy Score](https://www.codacy.com/project/badge/b20026f43c2d4a149088ba0ad2ab6355)](https://www.codacy.com/public/jamesmessinger/swagger-cli)
 [![Inline docs](http://inch-ci.org/github/BigstickCarpet/swagger-cli.svg?branch=master&style=shields)](http://inch-ci.org/github/BigstickCarpet/swagger-cli)
 
 [![npm](http://img.shields.io/npm/v/swagger-cli.svg)](https://www.npmjs.com/package/swagger-cli)
