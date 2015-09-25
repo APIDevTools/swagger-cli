@@ -1,6 +1,5 @@
-Swagger CLI
+Swagger 2.0 CLI
 ============================
-#### Command-line tool to parse, validate, and host Swagger-based REST APIs
 
 [![Build Status](https://api.travis-ci.org/BigstickCarpet/swagger-cli.svg)](https://travis-ci.org/BigstickCarpet/swagger-cli)
 [![Dependencies](https://david-dm.org/BigstickCarpet/swagger-cli.svg)](https://david-dm.org/BigstickCarpet/swagger-cli)
@@ -12,23 +11,18 @@ Swagger CLI
 [![npm](http://img.shields.io/npm/v/swagger-cli.svg)](https://www.npmjs.com/package/swagger-cli)
 [![License](https://img.shields.io/npm/l/swagger-cli.svg)](LICENSE)
 
-| Alpha Code!
-|-------------------------------------
-| Swagger CLI is still being written.  It's not ready to use yet.  Check back later, once we release v1.0.0
-
 
 Features
 --------------------------
-* Parse and validate Swagger 2.0 APIs in __JSON or YAML__ format
-* Supports multi-file APIs via `$ref` pointers
-* Bundle multiple Swagger files into one combined Swagger file
-* Built-in __HTTP server__ to serve your REST API &mdash; great for testing!
-* __Fully-functional mocks__ for every operation in your API, including data persistence &mdash; great for POCs and demos!
+- Validate Swagger 2.0 APIs in **JSON or YAML** format
+- Supports multi-file APIs via `$ref` pointers
+- Bundle multiple Swagger files into one combined Swagger file
+- Built-in **HTTP server** to serve your REST API &mdash; great for testing!
 
 
 Installation
 --------------------------
-Install using [npm](https://docs.npmjs.com/getting-started/what-is-npm).  Install it globally (using the `-g` flag) to run it from any terminal window.
+Install using [npm](https://docs.npmjs.com/getting-started/what-is-npm):
 
 ```bash
 npm install -g swagger-cli
@@ -37,19 +31,70 @@ npm install -g swagger-cli
 
 Usage
 --------------------------
+
 ```bash
 swagger <command> [options] <filename>
 
 Commands:
-    validate        Validates a Swagger file (and any $referenced files)
+    validate                        Validates a Swagger API against the Swagger 2.0 schema and spec
 
-    bundle          Bundles multiple Swagger files into a single file
+    bundle                          Bundles a multi-file Swagger API into a single file
 
-    serve           Serves a Swagger file via a built-in HTTP REST server
+    serve                           Serves a Swagger API via the built-in HTTP REST server
 
 Options:
-    -h, --help      Show help for any command
-    -V, --version   Output the CLI version number
+    -h, --help                      Show help for any command
+    -V, --version                   Output the CLI version number
+```
+
+
+### Validate an API
+
+The `swagger validate` command will validate your Swagger API against the [Swagger 2.0 schema](https://github.com/reverb/swagger-spec/blob/master/schemas/v2.0/schema.json) _and_ the [Swagger 2.0 spec](https://github.com/reverb/swagger-spec/blob/master/versions/2.0.md) to make sure it is fully compliant.  The command will exit with a non-zero code if the API is invalid.
+
+```bash
+swagger validate [options] <filename>
+
+Options:
+    --no-schema                     Do NOT validate against the Swagger 2.0 schema
+
+    --no-spec                       Do NOT validate against the Swagger 2.0 spec
+```
+
+
+### Combine Multiple Files
+
+You can split your Swagger API into multiple files for maintainability reasons, and use [`$ref` pointers](https://github.com/swagger-api/swagger-spec/blob/master/versions/2.0.md#reference-object) to reference each file. The `swagger bundle` command will combine all of those referenced files into a single file, which is useful for distribution or for use with tools that don't support `$ref` pointers.
+
+To reduce file size, each referenced file is only included _once_ in the final file.  Any other references to that file are replaced with _internal_ `$ref` pointers.  However, you can also choose to _fully dereference_ the API so there will be _no_ `$ref` pointers in the resulting file.  This results in a much larger file, but is useful if your other tools don't support `$ref` pointers.
+
+If you don't specify the `--output-file` option, then the bundled API will be written to stdout, so means you can pipe it to other commands.
+
+```bash
+swagger bundle [options] <filename>
+
+Options:
+    -o, --output-file <filename>    The output file
+
+    -d, --dereference               Fully dereference all $ref pointers
+```
+
+
+### HTTP REST Server
+
+The `swagger serve` command uses [Swagger Server](https://github.com/BigstickCarpet/swagger-server) to serve the REST API.  Swagger Server automatically provides mock implementations for every operation defined in your Swagger API, including data persistence.  You can replace or supplement the mock implementations via [Express middleware](http://expressjs.com/guide/using-middleware.html).
+
+By default, Swagger Server uses an [in-memory data store](https://github.com/BigstickCarpet/swagger-express-middleware/blob/master/docs/exports/MemoryDataStore.md), which means no data will be persisted after the server shuts down. This is great for testing and CI purposes, but if you want to keep data across sessions, then use the `--json` option, which will persist the REST resources as [JSON files](https://github.com/BigstickCarpet/swagger-express-middleware/blob/master/docs/exports/FileDataStore.md).
+
+> NOTE: Swagger Server is still in development, so some functionality is not fully complete yet.
+
+```bash
+swagger serve [options] <filename>
+
+Options:
+    -p, --port <port>               The server port number or socket name
+
+    -j, --json <basedir>            Store REST resources as JSON files under the given directory
 ```
 
 
@@ -60,16 +105,16 @@ I welcome any contributions, enhancements, and bug-fixes.  [File an issue](https
 #### Building/Testing
 To build/test the project locally on your computer:
 
-1. __Clone this repo__<br>
-`git clone https://github.com/BigstickCarpet/swagger-cli.git`
+1. **Clone this repo**<br>
+`git clone https://github.com/bigstickcarpet/swagger-cli.git`
 
-2. __Install dependencies__<br>
+2. **Install dependencies**<br>
 `npm install`
 
-3. __Run the build script__<br>
+3. **Run the build script**<br>
 `npm run build`
 
-4. __Run the unit tests__<br>
+4. **Run the unit tests**<br>
 `npm run mocha` (just the tests)<br>
 `npm test` (tests + code coverage)
 

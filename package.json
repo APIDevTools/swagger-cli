@@ -1,7 +1,7 @@
 {
   "name": "swagger-cli",
   "version": "1.0.0-beta.1",
-  "description": "Command-line tool to parse, validate, and serve Swagger-based REST APIs",
+  "description": "Swagger 2.0 command-line tool",
   "keywords": [
     "swagger",
     "rest",

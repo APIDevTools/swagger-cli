@@ -1,10 +1,6 @@
 #!/usr/bin/env node
 'use strict';
 
-/**
- * Sets up the various CLI commands using Commander
- */
-
 var program = require('commander'),
     chalk   = require('chalk'),
     api     = require('../');
@@ -12,25 +8,25 @@ var program = require('commander'),
 program.version(require('../package').version);
 
 program.command('validate <filename>')
-  .description('Validates a Swagger file (and any $referenced files)')
-  .option('-R, --no-resolve-refs', 'Do not resolve any $ref pointers')
-  .option('-X, --no-external-refs', 'Do not resolve any external $ref pointers')
+  .description('Validates a Swagger API against the Swagger 2.0 schema and spec')
+  .option('--no-schema', 'Do NOT validate against the Swagger 2.0 schema')
+  .option('--no-spec', 'Do NOT validate against the Swagger 2.0 spec')
   .action(function(filename, options) {
     api.validate(filename, options, outputErrorHandler);
   });
 
 program.command('bundle')
-  .description('Bundles multiple Swagger files into a single file')
-  .option('-d, --dereference', 'Dereference all $ref pointers (not just external ones)')
-  .option('-o, --output-file [filename]', 'Output JSON to file name specified')
+  .description('Bundles a multi-file Swagger API into a single file')
+  .option('-o, --output-file <filename>', 'The output file')
+  .option('-d, --dereference', 'Fully dereference all $ref pointers')
   .action(function(filename, options) {
     api.bundle(filename, options, outputErrorHandler);
   });
 
 program.command('serve <filename>')
-  .description('Serves a Swagger file via a built-in HTTP REST server')
-  .option('-p, --port <port>', 'Specify port to run Swagger Server on')
-  .option('-f, --file-data-store [basedir]', 'Persist mock data to JSON files instead of in-memory')
+  .description('Serves a Swagger API via the built-in HTTP REST server')
+  .option('-p, --port <port>', 'The server port number or socket name')
+  .option('-j, --json <basedir>', 'Store REST resources as JSON files under the given directory')
   .action(function(filename, options) {
     api.serve(filename, options, outputErrorHandler);
   });
