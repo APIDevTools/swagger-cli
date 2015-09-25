@@ -79,8 +79,6 @@
 
   // Custom Globals
   "globals": {
-    "expect"      : false,    // Chai
-    "sinon"       : false     // Sinon
   }
 }
 
