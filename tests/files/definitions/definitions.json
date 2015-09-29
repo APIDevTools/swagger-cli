@@ -1,0 +1,8 @@
+{
+  "requiredString": {
+    "$ref": "required-string.yaml"
+  },
+  "name": {
+    "$ref": "../definitions/name.yaml"
+  }
+}
