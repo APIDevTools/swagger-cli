@@ -41,11 +41,8 @@ program.command('serve <filename>')
   .option('-p, --port <port>', 'The server port number or socket name')
   .option('-j, --json <basedir>', 'Store REST resources as JSON files under the given directory')
   .action(function(filename, options) {
-    api.serve(filename, options, function(err) {
-      if (err) {
-        errorHandler(err);
-      }
-    });
+    api.serve(filename, options)
+      .catch(errorHandler);
   });
 
 program

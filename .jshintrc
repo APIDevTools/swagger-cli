@@ -79,6 +79,7 @@
 
   // Custom Globals
   "globals": {
+    "Promise"     : true
   }
 }
 
