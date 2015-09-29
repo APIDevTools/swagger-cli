@@ -45,6 +45,7 @@ Commands:
 Options:
     -h, --help                      Show help for any command
     -V, --version                   Output the CLI version number
+    -d, --debug [filter]            Show debug output, optionally filtered (e.g. "*", "swagger:*", etc.)
 ```
 
 
@@ -64,27 +65,30 @@ Options:
 
 ### Combine Multiple Files
 
-You can split your Swagger API into multiple files for maintainability reasons, and use [`$ref` pointers](https://github.com/swagger-api/swagger-spec/blob/master/versions/2.0.md#reference-object) to reference each file. The `swagger bundle` command will combine all of those referenced files into a single file, which is useful for distribution or for use with tools that don't support `$ref` pointers.
+The Swagger 2.0 spec allows you to split your API across multiple files using [`$ref` pointers](https://github.com/swagger-api/swagger-spec/blob/master/versions/2.0.md#reference-object) to reference each file. You can use the `swagger bundle` command to combine all of those referenced files into a single file, which is useful for distribution or interoperation with other tools.
 
-To reduce file size, each referenced file is only included _once_ in the final file.  Any other references to that file are replaced with _internal_ `$ref` pointers.  However, you can also choose to _fully dereference_ the API so there will be _no_ `$ref` pointers in the resulting file.  This results in a much larger file, but is useful if your other tools don't support `$ref` pointers.
+By default, the `swagger bundle` command tries to keep the output file size as small as possible, by only embedding each referenced file _once_.  If the same file is referenced multiple times, then any subsequent references are simply modified to point to the _single_ inlined copy of the file.  If you want to produce a bundled file without _any_ `$ref` pointers, then add the `--dereference` option.  This will result in a larger file size, since multiple references to the same file will result in that file being embedded multiple times.
 
-If you don't specify the `--output-file` option, then the bundled API will be written to stdout, so means you can pipe it to other commands.
+If you don't specify the `--output-file` option, then the bundled API will be written to stdout, which means you can pipe it to other commands.
 
 ```bash
 swagger bundle [options] <filename>
 
 Options:
-    -o, --output-file <filename>    The output file
+    -o, --outfile <filename>        The output file
 
-    -d, --dereference               Fully dereference all $ref pointers
+    -r, --dereference               Fully dereference all $ref pointers
+
+    -f, --format <spaces>           Formats the JSON output using the given number of spaces
+                                    (the default is 2 spaces)
 ```
 
 
 ### HTTP REST Server
 
-The `swagger serve` command uses [Swagger Server](https://github.com/BigstickCarpet/swagger-server) to serve the REST API.  Swagger Server automatically provides mock implementations for every operation defined in your Swagger API, including data persistence.  You can replace or supplement the mock implementations via [Express middleware](http://expressjs.com/guide/using-middleware.html).
+The `swagger serve` command serves your REST API via the built-in HTTP server &mdash; [Swagger Server](https://github.com/BigstickCarpet/swagger-server).  Swagger Server automatically provides mock implementations for every operation defined in your Swagger API.  You can replace or supplement the mock implementations via [Express middleware](http://expressjs.com/guide/using-middleware.html).
 
-By default, Swagger Server uses an [in-memory data store](https://github.com/BigstickCarpet/swagger-express-middleware/blob/master/docs/exports/MemoryDataStore.md), which means no data will be persisted after the server shuts down. This is great for testing and CI purposes, but if you want to keep data across sessions, then use the `--json` option, which will persist the REST resources as [JSON files](https://github.com/BigstickCarpet/swagger-express-middleware/blob/master/docs/exports/FileDataStore.md).
+By default, Swagger Server uses an [in-memory data store](https://github.com/BigstickCarpet/swagger-express-middleware/blob/master/docs/exports/MemoryDataStore.md), which means no data will be persisted after the server shuts down. This is great for testing and CI purposes, but if you want to maintain data across sessions, then use the `--json` option, which will persist the REST resources as [JSON files](https://github.com/BigstickCarpet/swagger-express-middleware/blob/master/docs/exports/FileDataStore.md).
 
 > NOTE: Swagger Server is still in development, so some functionality is not fully complete yet.
 
