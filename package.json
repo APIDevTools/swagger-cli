@@ -52,6 +52,7 @@
   "dependencies": {
     "chalk": "^1.1.1",
     "commander": "^2.8.1",
+    "es6-promise": "^3.0.2",
     "lodash": "^3.10.1",
     "swagger-parser": "^3.0.1",
     "swagger-server": "^1.0.0-alpha.18"
