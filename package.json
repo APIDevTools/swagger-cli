@@ -4,6 +4,7 @@
   "description": "Swagger 2.0 command-line tool",
   "keywords": [
     "swagger",
+    "cli",
     "rest",
     "api",
     "yaml",

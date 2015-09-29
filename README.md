@@ -36,16 +36,16 @@ Usage
 swagger <command> [options] <filename>
 
 Commands:
-    validate                        Validates a Swagger API against the Swagger 2.0 schema and spec
+    validate                Validates a Swagger API against the Swagger 2.0 schema and spec
 
-    bundle                          Bundles a multi-file Swagger API into a single file
+    bundle                  Bundles a multi-file Swagger API into a single file
 
-    serve                           Serves a Swagger API via the built-in HTTP REST server
+    serve                   Serves a Swagger API via the built-in HTTP REST server
 
 Options:
-    -h, --help                      Show help for any command
-    -V, --version                   Output the CLI version number
-    -d, --debug [filter]            Show debug output, optionally filtered (e.g. "*", "swagger:*", etc.)
+    -h, --help              Show help for any command
+    -V, --version           Output the CLI version number
+    -d, --debug [filter]    Show debug output, optionally filtered (e.g. "*", "swagger:*", etc.)
 ```
 
 
@@ -57,9 +57,9 @@ The `swagger validate` command will validate your Swagger API against the [Swagg
 swagger validate [options] <filename>
 
 Options:
-    --no-schema                     Do NOT validate against the Swagger 2.0 schema
+    --no-schema             Do NOT validate against the Swagger 2.0 schema
 
-    --no-spec                       Do NOT validate against the Swagger 2.0 spec
+    --no-spec               Do NOT validate against the Swagger 2.0 spec
 ```
 
 
@@ -75,12 +75,12 @@ If you don't specify the `--output-file` option, then the bundled API will be wr
 swagger bundle [options] <filename>
 
 Options:
-    -o, --outfile <filename>        The output file
+    -o, --outfile <filename>    The output file
 
-    -r, --dereference               Fully dereference all $ref pointers
+    -r, --dereference           Fully dereference all $ref pointers
 
-    -f, --format <spaces>           Formats the JSON output using the given number of spaces
-                                    (the default is 2 spaces)
+    -f, --format <spaces>       Formats the JSON output using the given number of spaces
+                                (the default is 2 spaces)
 ```
 
 
@@ -96,9 +96,9 @@ By default, Swagger Server uses an [in-memory data store](https://github.com/Big
 swagger serve [options] <filename>
 
 Options:
-    -p, --port <port>               The server port number or socket name
+    -p, --port <port>         The server port number or socket name
 
-    -j, --json <basedir>            Store REST resources as JSON files under the given directory
+    -j, --json <basedir>      Store REST resources as JSON files under the given directory
 ```
 
 
