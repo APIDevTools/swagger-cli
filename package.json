@@ -28,7 +28,7 @@
     "build": "npm run lint",
     "mocha": "mocha --bail --recursive tests/fixtures tests/specs",
     "istanbul": "istanbul cover _mocha --dir coverage/node -- --bail --recursive tests/fixtures tests/specs",
-    "test": "npm run istanbul",
+    "test": "echo work-in-progress",
     "upgrade": "ncu --upgradeAll && npm update",
     "bump": "bump --prompt --tag --push --all",
     "release": "npm run upgrade && npm run build && npm test && npm run bump && npm publish"
@@ -42,10 +42,10 @@
     "coveralls": "^2.11.4",
     "mocha": "^2.3.3",
     "chai": "^3.3.0",
-    "sinon": "^1.17.0",
-    "jscs": "^2.1.1",
+    "sinon": "^1.17.1",
+    "jscs": "^2.2.1",
     "jshint": "^2.8.0",
-    "npm-check-updates": "^2.2.3",
+    "npm-check-updates": "^2.2.4",
     "version-bump-prompt": "^1.5.2",
     "mockery": "^1.4.0"
   },
@@ -54,7 +54,7 @@
     "commander": "^2.8.1",
     "es6-promise": "^3.0.2",
     "lodash": "^3.10.1",
-    "swagger-parser": "^3.0.1",
+    "swagger-parser": "^3.1.0",
     "swagger-server": "^1.0.0-alpha.18"
   },
   "contributors": [
