@@ -3,7 +3,6 @@ Swagger 2.0 CLI
 
 [![Build Status](https://api.travis-ci.org/BigstickCarpet/swagger-cli.svg)](https://travis-ci.org/BigstickCarpet/swagger-cli)
 [![Dependencies](https://david-dm.org/BigstickCarpet/swagger-cli.svg)](https://david-dm.org/BigstickCarpet/swagger-cli)
-[![Coverage Status](https://coveralls.io/repos/BigstickCarpet/swagger-cli/badge.svg?branch=master&service=github)](https://coveralls.io/r/BigstickCarpet/swagger-cli)
 [![Code Climate Score](https://codeclimate.com/github/BigstickCarpet/swagger-cli/badges/gpa.svg)](https://codeclimate.com/github/BigstickCarpet/swagger-cli)
 [![Codacy Score](https://www.codacy.com/project/badge/b20026f43c2d4a149088ba0ad2ab6355)](https://www.codacy.com/public/jamesmessinger/swagger-cli)
 [![Inline docs](http://inch-ci.org/github/BigstickCarpet/swagger-cli.svg?branch=master&style=shields)](http://inch-ci.org/github/BigstickCarpet/swagger-cli)
@@ -18,6 +17,13 @@ Features
 - Supports multi-file APIs via `$ref` pointers
 - Bundle multiple Swagger files into one combined Swagger file
 - Built-in **HTTP server** to serve your REST API &mdash; great for testing!
+
+
+Related Projects
+--------------------------
+- [Swagger Parser](https://github.com/BigstickCarpet/swagger-parser)
+- [Swagger Express Middleware](https://github.com/BigstickCarpet/swagger-express-middleware)
+- [Swagger Server](https://github.com/BigstickCarpet/swagger-server)
 
 
 Installation
@@ -118,9 +124,8 @@ To build/test the project locally on your computer:
 3. **Run the build script**<br>
 `npm run build`
 
-4. **Run the unit tests**<br>
-`npm run mocha` (just the tests)<br>
-`npm test` (tests + code coverage)
+4. **Run the tests**<br>
+`npm test`
 
 
 License

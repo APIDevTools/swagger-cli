@@ -1,9 +1,9 @@
 'use strict';
 var swaggerCli = require('../'),
-  parser = require('swagger-parser'),
-  expect = require('chai').expect,
-  sinon  = require('sinon'),
-  cbSpy = null;
+    parser     = require('swagger-parser'),
+    expect     = require('chai').expect,
+    sinon      = require('sinon'),
+    cbSpy      = null;
 
 describe('swagger-cli validate command', function() {
   beforeEach(function() {

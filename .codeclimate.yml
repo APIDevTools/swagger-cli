@@ -3,4 +3,3 @@ languages:
 exclude_paths:
 - "node_modules/*"
 - "tests/*"
-- "coverage/*"
