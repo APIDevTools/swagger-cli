@@ -1,0 +1,13 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: API with bad $ref
+
+paths:
+  /people:
+    get:
+      responses:
+        200:
+          description: Returns the requested person
+          schema:
+            $ref: '#/definitions/person'      # <--- Error! Reference doesn't exist

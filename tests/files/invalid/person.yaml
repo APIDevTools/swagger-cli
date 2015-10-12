@@ -1,0 +1,22 @@
+title: Person
+type: object
+required:
+  - name
+properties:
+  name:
+    type: string
+    minLength: 1
+  birthdate:
+    type: string
+    format: date
+  gender:
+    type: string
+    enum:
+      - male
+      - female
+  height:
+    type: number
+  weight:
+    type: number
+  address:
+    $ref: address.yaml      # <--- Error! File doesn't exist

@@ -1,0 +1,21 @@
+title: Place
+type: object
+required:
+  - name
+  - geoLocation
+properties:
+  name:
+    type: string
+    minLength: 1
+  geoLocation:
+    type: object
+    required:
+      - latitude
+      - longitude
+    properties:
+      latitude:
+        type: number
+      longitude:
+        type: number
+  address:
+    type: string

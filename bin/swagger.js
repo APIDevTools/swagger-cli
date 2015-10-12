@@ -54,7 +54,7 @@ program
   .parse(process.argv);
 
 // Show help if no options were given
-if (program.rawArgs.length < 3) {
+if (program.rawArgs.length < 4) {
   program.help();
 }
 

@@ -1,0 +1,21 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: API with external $refs
+
+paths:
+  /people/{name}:
+    parameters:
+      - name: name
+        in: path
+        type: string
+        required: true
+    get:
+      responses:
+        200:
+          description: Returns the requested person
+          schema:
+            $ref: '#/definitions/person'
+
+definitions:
+  $ref: definitions.json

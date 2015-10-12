@@ -1,0 +1,8 @@
+{
+  "person": {
+    "$ref": "person.yaml"
+  },
+  "place": {
+    "$ref": "place.yaml"
+  }
+}
