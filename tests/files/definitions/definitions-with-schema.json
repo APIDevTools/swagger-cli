@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "firstName": {
+      "id": "http://fake-swagger-cli.com/definitions/name",
+      "type": "string",
+      "description": "This is the first, given, non-familial name"
+    },
+    "phoneNumber": {
+      "id": "http://fake-swagger-cli.com/definitions/phoneNumber",
+      "type": "array",
+      "items": {
+        "id": "http://fake-swagger-cli.com/definitions/phoneNumber/0",
+        "type": "object",
+        "properties": {
+          "areaCode": {
+            "id": "http://fake-swagger-cli.com/definitions/phoneNumber/0/areaCode",
+            "type": "string",
+            "description": "The 123 in '(123) 456-7890'"
+          },
+          "localNumber": {
+            "id": "http://fake-swagger-cli.com/definitions/phoneNumber/0/areaCode",
+            "type": "string",
+            "description": "The 456-7890 in '(123) 456-7890'"
+          }
+        },
+        "required": [
+          "areaCode",
+          "localNumber"
+        ]
+      }
+    }
+  },
+  "required": [
+    "firstName",
+    "phoneNumber"
+  ]
+}

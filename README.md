@@ -79,6 +79,8 @@ Options:
 
     -r, --dereference               Fully dereference all $ref pointers
 
+    -j, --swagger-json-schema       Remove any JSON Schema pieces not supported by Swagger's implementation of JSON Schema
+
     -f, --format <spaces>           Formats the JSON output using the given number of spaces
                                     (the default is 2 spaces)
 ```
