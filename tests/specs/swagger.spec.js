@@ -125,6 +125,37 @@ describe('swagger-cli commands', function() {
     }
   );
 
+  it('running the \'swagger bundle -j\' command removes json schema parts that swagger can\'t handle', function() {
+    //remove potential leftover testfile from previous failed test
+    if (fs.existsSync('tests/swaggerSample/test.json')) {
+      fs.unlinkSync('tests/swaggerSample/test.json');
+    }
+    
+    //Bundle the file while specifying -j to remove json-schema parts
+    var returnBuf = execSync('swagger bundle -j -o tests/swaggerSample/test.json tests/swaggerSample/swagger-with-schema.json');
+    var outputArray = returnBuf.toString().split('\n');
+    outputArray = _.dropRight(outputArray);
+    
+    //Command should run successfully
+    expect(outputArray).to.deep.equal([
+      'Bundling file: tests/swaggerSample/swagger.yaml',
+      'File parsed successfully',
+      'Writing parsed data to file tests/swaggerSample/test.json',
+      'Parsed data successfully written to file'
+    ]);
+
+    //Now validate the resulting file to ensure the troublesome json-schema parts don't result in errors
+    var returnBuffer = execSync(swaggerCmd + ' validate tests/swaggerSample/test.json');
+    var outputArray = returnBuffer.toString().split('\n');
+
+    outputArray = _.dropRight(outputArray);
+
+    expect(outputArray).to.deep.equal([
+      'Validating file: tests/swaggerSample/test.yaml',
+      'File validated successfully'
+    ]);
+  });
+
   it('running the \'swagger bundle\' command on an invalid swagger file produces the expected error', function() {
     var errorMessageArray = [];
     try {

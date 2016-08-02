@@ -20,6 +20,7 @@ program.command('validate <filename>')
 program.command('bundle <filename>')
   .description('Bundles a multi-file Swagger API into a single file')
   .option('-o, --outfile <filename>', 'The output file')
+  .option('-j, --swagger-json-schema', 'Remove any JSON Schema pieces that aren\'t supported by Swagger')
   .option('-r, --dereference', 'Fully dereference all $ref pointers')
   .option('-f, --format <spaces>', 'Formats the JSON output using the given number of spaces (default is 2)')
   .action(function(filename, options) {
