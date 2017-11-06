@@ -21,6 +21,16 @@
     "name": "James Messinger",
     "url": "https://github.com/BigstickCarpet"
   },
+  "contributors": [
+    {
+      "name": "James Messinger",
+      "url": "http://jamesmessinger.com"
+    },
+    {
+      "name": "Randall Krauskopf",
+      "url": "https://github.com/rkrauskopf"
+    }
+  ],
   "homepage": "http://bigstickcarpet.com/swagger-parser",
   "license": "MIT",
   "repository": {
@@ -28,6 +38,9 @@
     "url": "https://github.com/BigstickCarpet/swagger-cli.git"
   },
   "main": "lib/index.js",
+  "bin": {
+    "swagger": "bin/swagger.js"
+  },
   "scripts": {
     "lint": "jshint . --verbose && jscs . --verbose",
     "build": "npm run lint",
@@ -57,18 +70,5 @@
     "mkdirp": "^0.5.1",
     "swagger-parser": "^3.3.0",
     "swagger-server": "^1.0.0-alpha.18"
-  },
-  "contributors": [
-    {
-      "name": "James Messinger",
-      "url": "http://jamesmessinger.com"
-    },
-    {
-      "name": "Randall Krauskopf",
-      "url": "https://github.com/rkrauskopf"
-    }
-  ],
-  "bin": {
-    "swagger": "bin/swagger.js"
   }
 }
