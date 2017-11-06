@@ -7,7 +7,7 @@ let path = require('path'),
 /**
  * The path of the CLI script.
  */
-exports.cliPath = path.resolve(__dirname, '..', '..', 'bin', 'swagger.js');
+exports.cliPath = path.resolve(__dirname, '..', '..', 'bin', 'swagger-cli.js');
 
 /**
  * The path of the .tmp directory.
