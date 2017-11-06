@@ -46,7 +46,7 @@
     "lib"
   ],
   "scripts": {
-    "lint": "jshint . --verbose && jscs . --verbose",
+    "lint": "eslint bin lib test --fix",
     "build": "npm run lint",
     "mocha": "mocha --bail --recursive tests/fixtures tests/specs",
     "test": "npm run mocha",
