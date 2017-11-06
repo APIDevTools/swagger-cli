@@ -21,8 +21,12 @@
     "name": "James Messinger",
     "url": "https://github.com/BigstickCarpet"
   },
-  "license": "MIT",
   "homepage": "https://github.com/BigstickCarpet/swagger-cli",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BigstickCarpet/swagger-cli.git"
+  },
   "main": "lib/index.js",
   "scripts": {
     "lint": "jshint . --verbose && jscs . --verbose",
@@ -32,10 +36,6 @@
     "upgrade": "ncu --upgradeAll && npm update",
     "bump": "bump --prompt --tag --push --all",
     "release": "npm run upgrade && npm run build && npm test && npm run bump && npm publish"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/BigstickCarpet/swagger-cli.git"
   },
   "devDependencies": {
     "chai": "^3.3.0",
