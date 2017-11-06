@@ -1,0 +1,4 @@
+--bail
+--recursive
+tests/fixtures
+tests/specs

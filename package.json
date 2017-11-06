@@ -47,9 +47,7 @@
   ],
   "scripts": {
     "lint": "eslint bin lib test --fix",
-    "build": "npm run lint",
-    "mocha": "mocha --bail --recursive tests/fixtures tests/specs",
-    "test": "npm run mocha",
+    "test": "mocha && npm run lint",
     "upgrade": "npm-check -u",
     "bump": "bump --prompt --tag --push --all",
     "release": "npm run upgrade && npm run build && npm test && npm run bump && npm publish"
