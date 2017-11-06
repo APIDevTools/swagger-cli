@@ -1,7 +1,7 @@
 'use strict';
 
-var path      = require('path'),
-    rimraf    = require('rimraf'),
+let path = require('path'),
+    rimraf = require('rimraf'),
     spawnSync = require('spawn-sync');
 
 /**
@@ -18,7 +18,7 @@ exports.tmpPath = path.join(__dirname, '..', '.tmp');
 /**
  * Delete the .tmp directory before each test
  */
-beforeEach(function(done) {
+beforeEach(function (done) {
   rimraf(exports.tmpPath, done);
 });
 
@@ -28,10 +28,10 @@ beforeEach(function(done) {
  * @param {...string} args - The arguments to pass to the CLI
  * @returns {object}
  */
-exports.run = function(args) {
+exports.run = function (args) {
   // Run the CLI
   args = [exports.cliPath].concat(Array.prototype.slice.call(arguments));
-  var output = spawnSync('node', args);
+  let output = spawnSync('node', args);
 
   // Normalize the output
   output.stdout = output.stdout.toString();
