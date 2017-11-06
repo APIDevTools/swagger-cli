@@ -3,7 +3,7 @@
 let helper = require('../fixtures/helper'),
     expect = require('chai').expect;
 
-describe('swagger validate', function () {
+describe('swagger-cli validate', function () {
   it('should validate a single-file API', function () {
     let output = helper.run('validate', 'test/files/valid/simple-api.spec.yaml');
     expect(output.stderr).to.be.empty;

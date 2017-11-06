@@ -39,7 +39,7 @@
   },
   "main": "lib/index.js",
   "bin": {
-    "swagger": "bin/swagger.js"
+    "swagger-cli": "bin/swagger-cli.js"
   },
   "files": [
     "bin",
