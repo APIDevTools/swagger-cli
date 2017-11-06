@@ -36,15 +36,6 @@ program.command('bundle <filename>')
       .catch(errorHandler);
   });
 
-program.command('serve <filename>')
-  .description('Serves a Swagger API via the built-in HTTP REST server')
-  .option('-p, --port <port>', 'The server port number or socket name')
-  .option('-j, --json <basedir>', 'Store REST resources as JSON files under the given directory')
-  .action((filename, options) => {
-    api.serve(filename, options)
-      .catch(errorHandler);
-  });
-
 program
   .version(require('../package').version)
   .option('-d, --debug [filter]', 'Show debug output, optionally filtered (e.g. "*", "swagger:*", etc.)')

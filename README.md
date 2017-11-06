@@ -15,7 +15,6 @@ Features
 - Validate Swagger 2.0 APIs in **JSON or YAML** format
 - Supports multi-file APIs via `$ref` pointers
 - Bundle multiple Swagger files into one combined Swagger file
-- Built-in **HTTP server** to serve your REST API &mdash; great for testing!
 
 
 Related Projects
@@ -44,8 +43,6 @@ Commands:
     validate                Validates a Swagger API against the Swagger 2.0 schema and spec
 
     bundle                  Bundles a multi-file Swagger API into a single file
-
-    serve                   Serves a Swagger API via the built-in HTTP REST server
 
 Options:
     -h, --help              Show help for any command
@@ -86,24 +83,6 @@ Options:
 
     -f, --format <spaces>       Formats the JSON output using the given number of spaces
                                 (the default is 2 spaces)
-```
-
-
-### HTTP REST Server
-
-The `swagger-cli serve` command serves your REST API via the built-in HTTP server &mdash; [Swagger Server](https://github.com/BigstickCarpet/swagger-server).  Swagger Server automatically provides mock implementations for every operation defined in your Swagger API.  You can replace or supplement the mock implementations via [Express middleware](http://expressjs.com/guide/using-middleware.html).
-
-By default, Swagger Server uses an [in-memory data store](https://github.com/BigstickCarpet/swagger-express-middleware/blob/master/docs/exports/MemoryDataStore.md), which means no data will be persisted after the server shuts down. This is great for testing and CI purposes, but if you want to maintain data across sessions, then use the `--json` option, which will persist the REST resources as [JSON files](https://github.com/BigstickCarpet/swagger-express-middleware/blob/master/docs/exports/FileDataStore.md).
-
-> NOTE: Swagger Server is still in development, so some functionality is not fully complete yet.
-
-```bash
-swagger-cli serve [options] <filename>
-
-Options:
-    -p, --port <port>         The server port number or socket name
-
-    -j, --json <basedir>      Store REST resources as JSON files under the given directory
 ```
 
 
