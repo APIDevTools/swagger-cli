@@ -1,4 +1,4 @@
 --bail
 --recursive
-tests/fixtures
-tests/specs
+test/fixtures
+test/specs
