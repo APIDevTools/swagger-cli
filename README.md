@@ -3,7 +3,6 @@ Swagger 2.0 CLI
 
 [![Build Status](https://api.travis-ci.org/BigstickCarpet/swagger-cli.svg?branch=master)](https://travis-ci.org/BigstickCarpet/swagger-cli)
 [![Dependencies](https://david-dm.org/BigstickCarpet/swagger-cli.svg)](https://david-dm.org/BigstickCarpet/swagger-cli)
-[![Code Climate Score](https://codeclimate.com/github/BigstickCarpet/swagger-cli/badges/gpa.svg)](https://codeclimate.com/github/BigstickCarpet/swagger-cli)
 [![Codacy Score](https://www.codacy.com/project/badge/b20026f43c2d4a149088ba0ad2ab6355)](https://www.codacy.com/public/jamesmessinger/swagger-cli)
 [![Inline docs](http://inch-ci.org/github/BigstickCarpet/swagger-cli.svg?branch=master&style=shields)](http://inch-ci.org/github/BigstickCarpet/swagger-cli)
 
