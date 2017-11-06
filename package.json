@@ -41,6 +41,10 @@
   "bin": {
     "swagger": "bin/swagger.js"
   },
+  "files": [
+    "bin",
+    "lib"
+  ],
   "scripts": {
     "lint": "jshint . --verbose && jscs . --verbose",
     "build": "npm run lint",
