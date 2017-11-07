@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 'use strict';
 
-let program = require('commander'),
-    chalk = require('chalk'),
-    api = require('../');
+const program = require('commander');
+const chalk = require('chalk');
+const api = require('../');
 
 program.command('validate <filename>')
   .description('Validates a Swagger API against the Swagger 2.0 schema and spec')
