@@ -1,25 +1,19 @@
 'use strict';
 
-let path = require('path'),
-    rimraf = require('rimraf'),
-    spawnSync = require('spawn-sync');
+const path = require('path');
+const rimraf = require('rimraf');
+const spawnSync = require('spawn-sync');
 
-/**
- * The path of the CLI script.
- */
-exports.cliPath = path.resolve(__dirname, '..', '..', 'bin', 'swagger-cli.js');
-
-/**
- * The path of the .tmp directory.
- * This directory is automatically cleared before each test.
- */
-exports.tmpPath = path.join(__dirname, '..', '.tmp');
+const cwdPath = process.cwd() + '/';
+const cwdUrl = encodeURI(process.cwd() + '/');
+const cliPath = path.resolve(__dirname, '..', '..', 'bin', 'swagger-cli.js');
+const tmpPath = path.join(__dirname, '..', '.tmp');
 
 /**
  * Delete the .tmp directory before each test
  */
-beforeEach(function (done) {
-  rimraf(exports.tmpPath, done);
+beforeEach(done => {
+  rimraf(tmpPath, done);
 });
 
 /**
@@ -30,11 +24,35 @@ beforeEach(function (done) {
  */
 exports.run = function (args) {
   // Run the CLI
-  args = [exports.cliPath].concat(Array.prototype.slice.call(arguments));
+  args = [cliPath].concat(Array.prototype.slice.call(arguments));
   let output = spawnSync('node', args);
 
   // Normalize the output
-  output.stdout = output.stdout.toString();
-  output.stderr = output.stderr.toString();
+  output.stdout = replacePaths(output.stdout.toString());
+  output.stderr = replacePaths(output.stderr.toString());
+
   return output;
 };
+
+/**
+ * Replaces absolute paths with relative paths in the output, to simplify testing
+ *
+ * @param {string} output - The original program output
+ * @returns {string}
+ */
+function replacePaths (output) {
+  let newOutput = '';
+
+  while (true) {                                  // eslint-disable-line no-constant-condition
+    newOutput = output.replace(cwdPath, '');
+    newOutput = newOutput.replace(cwdUrl, '');
+
+    if (newOutput === output) {
+      // No more occurrences exist
+      return newOutput;
+    }
+    else {
+      output = newOutput;
+    }
+  }
+}
