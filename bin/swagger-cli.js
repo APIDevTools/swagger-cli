@@ -55,6 +55,7 @@ if (program.rawArgs.length < 4) {
  * @param {Error} err
  */
 function errorHandler (err) {
-  console.error(chalk.red(err.stack));
+  let errorMessage = process.env.DEBUG ? err.stack : err.message;
+  console.error(chalk.red(errorMessage));
   process.exit(1);
 }
