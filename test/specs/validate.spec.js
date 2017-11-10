@@ -29,6 +29,38 @@ describe('swagger-cli validate', () => {
     expect(output.stdout).to.equal('test/files/valid/circular-refs/api.yaml is valid\n');
   });
 
+  it('should fail validation against the Swagger 2.0 schema', () => {
+    let output = helper.run('validate', 'test/files/invalid/schema/api.yaml');
+
+    expect(output.stdout).to.be.empty;
+    expect(output.status).to.equal(1);
+    expect(output.stderr).to.include('Swagger schema validation failed.');
+  });
+
+  it('should skip validation against the Swagger 2.0 schema', () => {
+    let output = helper.run('validate', '--no-schema', 'test/files/invalid/schema/api.yaml');
+
+    expect(output.stderr).to.be.empty;
+    expect(output.status).to.equal(0);
+    expect(output.stdout).to.include('test/files/invalid/schema/api.yaml is valid\n');
+  });
+
+  it('should fail validation against the Swagger 2.0 specification', () => {
+    let output = helper.run('validate', 'test/files/invalid/spec/api.yaml');
+
+    expect(output.stdout).to.be.empty;
+    expect(output.status).to.equal(1);
+    expect(output.stderr).to.equal('Validation failed. /paths/people/{name}/get is missing path parameter(s) for {name}\n');
+  });
+
+  it('should skip validation against the Swagger 2.0 specification', () => {
+    let output = helper.run('validate', '--no-spec', 'test/files/invalid/spec/api.yaml');
+
+    expect(output.stderr).to.be.empty;
+    expect(output.status).to.equal(0);
+    expect(output.stdout).to.include('test/files/invalid/spec/api.yaml is valid\n');
+  });
+
   it('should fail validation if a $ref is invalid', () => {
     let output = helper.run('validate', 'test/files/invalid/internal-ref/api.yaml');
 
