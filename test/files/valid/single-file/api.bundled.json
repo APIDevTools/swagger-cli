@@ -1,0 +1,56 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "A very simple API"
+  },
+  "paths": {
+    "/people": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Returns the list of people",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/person"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "person": {
+      "title": "Person",
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "birthdate": {
+          "type": "string",
+          "format": "date"
+        },
+        "gender": {
+          "type": "string",
+          "enum": [
+            "male",
+            "female"
+          ]
+        },
+        "height": {
+          "type": "number"
+        },
+        "weight": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}
