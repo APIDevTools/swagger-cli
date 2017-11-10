@@ -51,4 +51,16 @@ describe('swagger-cli validate', () => {
     );
   });
 
+  it('should output the full error stack in debug mode', () => {
+    let output = helper.run('--debug', 'validate', 'test/files/invalid/external-refs.spec.yaml');
+
+    expect(output.stdout).not.to.be.empty;
+    expect(output.status).to.equal(1);
+    expect(output.stderr).to.include(
+      'Error opening file "test/files/invalid/address.yaml" \n' +
+      "ENOENT: no such file or directory, open 'test/files/invalid/address.yaml'\n"
+    );
+    expect(output.stderr).to.include('at ReadFileContext');
+  });
+
 });
