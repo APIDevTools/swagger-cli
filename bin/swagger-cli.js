@@ -1,53 +1,168 @@
 #!/usr/bin/env node
 'use strict';
 
-const program = require('commander');
+const yargs = require('yargs');
 const chalk = require('chalk');
 const api = require('../');
+const helpText = require('./help-text.json');
 
-program.command('validate <filename>')
-  .description('Validates a Swagger API against the Swagger 2.0 schema and spec')
-  .option('--no-schema', 'Do NOT validate against the Swagger 2.0 schema')
-  .option('--no-spec', 'Do NOT validate against the Swagger 2.0 spec')
-  .action((filename, options) => {
-    api.validate(filename, options)
-      .then(() => {
-        console.log(filename, 'is valid');
-      })
-      .catch(errorHandler);
-  });
+(function main () {
+  let args = parseArgs();
+  let command = args.command;
+  let file = args.file;
+  let options = args.options;
 
-program.command('bundle <filename>')
-  .description('Bundles a multi-file Swagger API into a single file')
-  .option('-o, --outfile <filename>', 'The output file')
-  .option('-r, --dereference', 'Fully dereference all $ref pointers')
-  .option('-f, --format <spaces>', 'Formats the JSON output using the given number of spaces (default is 2)')
-  .action((filename, options) => {
-    api.bundle(filename, options)
-      .then((bundle) => {
-        if (options.outfile) {
-          console.log('Created %s from %s', options.outfile, filename);
-        }
-        else {
-          // Write the bundled API to stdout
-          console.log(bundle);
-        }
-      })
-      .catch(errorHandler);
-  });
+  if (options.debug) {
+    // Enable debug output
+    process.env.DEBUG = 'swagger:*,json-schema-ref-parser';
+  }
 
-program
-  .version(require('../package').version)
-  .option('-d, --debug [filter]', 'Show debug output, optionally filtered (e.g. "*", "swagger:*", etc.)')
-  .on('debug', (filter) => {
-    process.env.DEBUG = filter || 'swagger:*,json-schema-ref-parser';
-  })
-  .parse(process.argv);
+  if (options.help) {
+    // Show help text and exit
+    console.log(getHelpText(command));
+    process.exit(0);
+  }
+  else if (command === 'validate' && file) {
+    // Validate an API
+    validate(file, options);
+  }
+  else if (command === 'bundle' && file) {
+    // Bundle a multi-file API
+    bundle(file, options);
+  }
+  else {
+    // Invalid args.  Show help text and exit with non-zero
+    console.error('Error: Invalid arguments\n');
+    console.error(getHelpText(command));
+    process.exit(1);
+  }
+}());
 
-// Show help if no options were given
-if (program.rawArgs.length < 4) {
-  program.help();
+
+/**
+ * Parses the command-line arguments
+ *
+ * @returns {object} - The parsed arguments
+ */
+function parseArgs () {
+  // Configure the argument parser
+  yargs
+    .option('schema', {
+      type: 'boolean',
+      default: true,
+    })
+    .option('spec', {
+      type: 'boolean',
+      default: true,
+    })
+    .option('o', {
+      alias: 'outfile',
+      type: 'string',
+      normalize: true,
+    })
+    .option('r', {
+      alias: 'dereference',
+      type: 'boolean',
+    })
+    .option('f', {
+      alias: 'format',
+      type: 'number',
+      default: 2,
+    })
+    .option('d', {
+      alias: 'debug',
+      type: 'boolean',
+    })
+    .option('h', {
+      alias: 'help',
+      type: 'boolean',
+    });
+
+  // Show the version number on "--version" or "-v"
+  yargs
+    .version()
+    .alias('v', 'version');
+
+  // Disable the default "--help" behavior
+  yargs.help(false);
+
+  // Parse the command-line arguments
+  let args = yargs.argv;
+
+  // Normalize the parsed arguments
+  let parsed = {
+    command: args._[0],
+    file: args._[1],
+    options: {
+      schema: args.schema,
+      spec: args.spec,
+      outfile: args.outfile,
+      dereference: args.dereference,
+      format: args.format || 2,
+      debug: args.debug,
+      help: args.help,
+    }
+  };
+
+  if (parsed.options.debug) {
+    console.log(JSON.stringify(parsed, null, 2));
+  }
+
+  return parsed;
 }
+
+
+/**
+ * Validates an API definition against the Swagger 2.0 schema and spec
+ *
+ * @param {string} file - The path of the file to validate
+ * @param {object} options - Validation options
+ * @param {boolean} options.schema - Whether to validate against the Swagger 2.0 schema
+ * @param {boolean} options.spec - Whether to validate against the Swagger 2.0 specification
+ */
+function validate (file, options) {
+  api.validate(file, options)
+    .then(() => {
+      console.log(file, 'is valid');
+    })
+    .catch(errorHandler);
+}
+
+
+/**
+ * Bundles a multi-file API definition against the Swagger 2.0 schema and spec
+ *
+ * @param {string} file - The path of the file to validate
+ * @param {object} options - Validation options
+ * @param {boolean} options.schema - Whether to validate against the Swagger 2.0 schema
+ * @param {boolean} options.spec - Whether to validate against the Swagger 2.0 specification
+ */
+function bundle (file, options) {
+  api.bundle(file, options)
+    .then((bundled) => {
+      if (options.outfile) {
+        console.log('Created %s from %s', options.outfile, file);
+      }
+      else {
+        // Write the bundled API to stdout
+        console.log(bundled);
+      }
+    })
+    .catch(errorHandler);
+}
+
+
+/**
+ * Returns the help text for the specified command
+ *
+ * @param {string} [commandName] - The command to show help text for
+ * @returns {string} - the help text
+ */
+function getHelpText (commandName) {
+  let lines = helpText[commandName] || helpText.default;
+  return lines.join('\n');
+}
+
 
 /**
  * Writes error information to stderr and exits with a non-zero code
