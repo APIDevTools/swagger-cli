@@ -37,7 +37,7 @@ Usage
 --------------------------
 
 ```bash
-swagger-cli <command> [options] <filename>
+swagger-cli <command> [options] <file>
 
 Commands:
     validate                Validates a Swagger API against the Swagger 2.0 schema and spec
@@ -46,7 +46,7 @@ Commands:
 
 Options:
     -h, --help              Show help for any command
-    -V, --version           Output the CLI version number
+    -v, --version           Output the CLI version number
     -d, --debug [filter]    Show debug output, optionally filtered (e.g. "*", "swagger:*", etc.)
 ```
 
@@ -56,12 +56,12 @@ Options:
 The `swagger-cli validate` command will validate your Swagger API against the [Swagger 2.0 schema](https://github.com/reverb/swagger-spec/blob/master/schemas/v2.0/schema.json) _and_ the [Swagger 2.0 spec](https://github.com/reverb/swagger-spec/blob/master/versions/2.0.md) to make sure it is fully compliant.  The command will exit with a non-zero code if the API is invalid.
 
 ```bash
-swagger-cli validate [options] <filename>
+swagger-cli validate [options] <file>
 
 Options:
-    --no-schema             Do NOT validate against the Swagger 2.0 schema
+    --no-schema             Do NOT validate against the Swagger 2.0 JSON schema
 
-    --no-spec               Do NOT validate against the Swagger 2.0 spec
+    --no-spec               Do NOT validate against the Swagger 2.0 specification
 ```
 
 
@@ -74,10 +74,10 @@ By default, the `swagger-cli bundle` command tries to keep the output file size 
 If you don't specify the `--output-file` option, then the bundled API will be written to stdout, which means you can pipe it to other commands.
 
 ```bash
-swagger-cli bundle [options] <filename>
+swagger-cli bundle [options] <file>
 
 Options:
-    -o, --outfile <filename>    The output file
+    -o, --outfile <file>        The output file
 
     -r, --dereference           Fully dereference all $ref pointers
 

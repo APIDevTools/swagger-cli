@@ -1,0 +1,52 @@
+{
+  "default": [
+    "Usage:",
+    "    swagger-cli <command> [options] <file>",
+    "",
+    "Commands:",
+    "    validate                Validates a Swagger API against the Swagger 2.0 schema and spec",
+    "",
+    "    bundle                  Bundles a multi-file Swagger API into a single file",
+    "",
+    "Options:",
+    "    -h, --help              Show help for any command",
+    "    -V, --version           Output the CLI version number",
+    "    -d, --debug             Show debug output",
+    ""
+  ],
+  "validate": [
+    "Validates an API definition against the Swagger 2.0 schema and/or specification.",
+    "Returns a non-zero exit code if validation fails.",
+    "",
+    "Usage:",
+    "    swagger-cli validate [options] <file>",
+    "",
+    "Options:",
+    "    --no-schema             Do NOT validate against the Swagger 2.0 JSON schema",
+    "",
+    "    --no-spec               Do NOT validate against the Swagger 2.0 specification",
+    "",
+    "    -d, --debug             Show debug output",
+    ""
+  ],
+  "bundle": [
+    "Combines a multi-file API definition into a single file.",
+    "",
+    "Optimizes for file size by default, by only embedding each referenced file once,",
+    "and altering other references to point to the single inlined file. Use the --dereference",
+    "option to replace each $ref with the file contents instead. This will result in a larger",
+    "output file that does not contain any $refs.",
+    "",
+    "Usage:",
+    "    swagger-cli bundle [options] <file>",
+    "",
+    "Options:",
+    "    -o, --outfile <file>        The output file",
+    "",
+    "    -r, --dereference           Fully dereference all $ref pointers",
+    "",
+    "    -f, --format <spaces>       Formats the JSON output using the given number of spaces",
+    "                                (the default is 2 spaces)",
+    ""
+  ]
+}
