@@ -1,6 +1,6 @@
 {
   "name": "swagger-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Swagger 2.0 command-line tool",
   "keywords": [
     "swagger",
