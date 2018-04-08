@@ -1,4 +1,5 @@
 --bail
+--timeout 10000
 --recursive
 test/fixtures
 test/specs
