@@ -54,7 +54,7 @@
     "chai": "^4.1.2",
     "eslint": "^4.11.0",
     "eslint-config-modular": "^4.1.0",
-    "mocha": "^4.0.1",
+    "mocha": "^5.0.5",
     "mockery": "^2.1.0",
     "npm-check": "^5.5.1",
     "rimraf": "^2.4.3",
@@ -65,7 +65,7 @@
     "chalk": "^2.3.0",
     "mkdirp": "^0.5.1",
     "swagger-parser": "^4.0.1",
-    "yargs": "^10.0.3"
+    "yargs": "^11.0.0"
   },
   "engines": {
     "node": ">=4.0.0"
