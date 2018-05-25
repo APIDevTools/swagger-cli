@@ -113,12 +113,12 @@ function parseArgs () {
 
 
 /**
- * Validates an API definition against the Swagger 2.0 schema and spec
+ * Validates an API definition against the Swagger/OpenAPI schema and spec
  *
  * @param {string} file - The path of the file to validate
  * @param {object} options - Validation options
- * @param {boolean} options.schema - Whether to validate against the Swagger 2.0 schema
- * @param {boolean} options.spec - Whether to validate against the Swagger 2.0 specification
+ * @param {boolean} options.schema - Whether to validate against the Swagger/OpenAPI schema
+ * @param {boolean} options.spec - Whether to validate against the Swagger/OpenAPI specification
  */
 function validate (file, options) {
   api.validate(file, options)
@@ -130,12 +130,10 @@ function validate (file, options) {
 
 
 /**
- * Bundles a multi-file API definition against the Swagger 2.0 schema and spec
+ * Bundles a multi-file API definition
  *
  * @param {string} file - The path of the file to validate
  * @param {object} options - Validation options
- * @param {boolean} options.schema - Whether to validate against the Swagger 2.0 schema
- * @param {boolean} options.spec - Whether to validate against the Swagger 2.0 specification
  */
 function bundle (file, options) {
   api.bundle(file, options)

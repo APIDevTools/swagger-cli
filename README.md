@@ -1,4 +1,4 @@
-Swagger 2.0 CLI
+Swagger/OpenAPI CLI
 ============================
 
 [![Build Status](https://api.travis-ci.org/BigstickCarpet/swagger-cli.svg?branch=master)](https://travis-ci.org/BigstickCarpet/swagger-cli)
@@ -12,9 +12,9 @@ Swagger 2.0 CLI
 
 Features
 --------------------------
-- Validate Swagger 2.0 APIs in **JSON or YAML** format
-- Supports multi-file APIs via `$ref` pointers
-- Bundle multiple Swagger files into one combined Swagger file
+- Validate Swagger/OpenAPI files in **JSON or YAML** format
+- Supports multi-file API definitions via `$ref` pointers
+- Bundle multiple Swagger/OpenAPI files into one combined file
 
 
 Related Projects
@@ -40,9 +40,9 @@ Usage
 swagger-cli <command> [options] <file>
 
 Commands:
-    validate                Validates a Swagger API against the Swagger 2.0 schema and spec
+    validate                Validates an API definition in Swagger 2.0 or OpenAPI 3.0 format
 
-    bundle                  Bundles a multi-file Swagger API into a single file
+    bundle                  Bundles a multi-file API definition into a single file
 
 Options:
     -h, --help              Show help for any command
@@ -53,21 +53,23 @@ Options:
 
 ### Validate an API
 
-The `swagger-cli validate` command will validate your Swagger API against the [Swagger 2.0 schema](https://github.com/reverb/swagger-spec/blob/master/schemas/v2.0/schema.json) _and_ the [Swagger 2.0 spec](https://github.com/reverb/swagger-spec/blob/master/versions/2.0.md) to make sure it is fully compliant.  The command will exit with a non-zero code if the API is invalid.
+The `swagger-cli validate` command will validate your Swagger/OpenAPI definition against the [Swagger 2.0 schema](https://github.com/reverb/swagger-spec/blob/master/schemas/v2.0/schema.json) or [OpenAPI 3.0 Schema](https://github.com/kogosoftwarellc/open-api/blob/master/packages/openapi-schema-validation/schema/openapi-3.0.json).  It also performs additional validations against the [specification](https://github.com/swagger-api/swagger-spec/blob/master/versions/2.0.md), which will catch some things that aren't covered by the schema, such as duplicate parameters, invalid MIME types, etc.
+
+The command will exit with a non-zero code if the API is invalid.
 
 ```bash
 swagger-cli validate [options] <file>
 
 Options:
-    --no-schema             Do NOT validate against the Swagger 2.0 JSON schema
+    --no-schema             Do NOT validate against the Swagger/OpenAPI JSON schema
 
-    --no-spec               Do NOT validate against the Swagger 2.0 specification
+    --no-spec               Do NOT validate against the Swagger/OpenAPI specification
 ```
 
 
 ### Combine Multiple Files
 
-The Swagger 2.0 spec allows you to split your API across multiple files using [`$ref` pointers](https://github.com/swagger-api/swagger-spec/blob/master/versions/2.0.md#reference-object) to reference each file. You can use the `swagger-cli bundle` command to combine all of those referenced files into a single file, which is useful for distribution or interoperation with other tools.
+The Swagger and OpenAPI specs allows you to split your API definition across multiple files using [`$ref` pointers](https://github.com/swagger-api/swagger-spec/blob/master/versions/2.0.md#reference-object) to reference each file. You can use the `swagger-cli bundle` command to combine all of those referenced files into a single file, which is useful for distribution or interoperation with other tools.
 
 By default, the `swagger-cli bundle` command tries to keep the output file size as small as possible, by only embedding each referenced file _once_.  If the same file is referenced multiple times, then any subsequent references are simply modified to point to the _single_ inlined copy of the file.  If you want to produce a bundled file without _any_ `$ref` pointers, then add the `--dereference` option.  This will result in a larger file size, since multiple references to the same file will result in that file being embedded multiple times.
 
