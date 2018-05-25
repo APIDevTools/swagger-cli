@@ -56,7 +56,8 @@ describe('swagger-cli bundle', () => {
 
     expect(output.stdout).to.be.empty;
     expect(output.status).to.equal(1);
-    expect(output.stderr).to.equal('Circular $ref pointer found at test/files/valid/circular-refs/api.yaml#/paths/~1thing/get/responses/200/schema\n');
+    expect(output.stderr).to.contain('Circular $ref pointer found at ');
+    expect(output.stderr).to.contain('test/files/valid/circular-refs/api.yaml#/paths/~1thing/get/responses/200/schema\n');
   });
 
   it('should output to a file (--outfile <file>)', () => {
@@ -64,7 +65,7 @@ describe('swagger-cli bundle', () => {
 
     expect(output.stderr).to.be.empty;
     expect(output.status).to.equal(0);
-    expect(output.stdout).to.be.equal('Created test/.tmp/bundled.json from test/files/valid/single-file/api.yaml\n');
+    expect(output.stdout).to.be.match(/Created test[/\\].tmp[/\\]bundled.json from test[/\\]files[/\\]valid[/\\]single-file[/\\]api.yaml\n/);
 
     let expectedOutput = fs.readFileSync('test/files/valid/single-file/api.bundled.json', 'utf8');
     let actualOutput = fs.readFileSync('test/.tmp/bundled.json', 'utf8');
@@ -76,7 +77,7 @@ describe('swagger-cli bundle', () => {
 
     expect(output.stderr).to.be.empty;
     expect(output.status).to.equal(0);
-    expect(output.stdout).to.be.equal('Created test/.tmp/bundled.json from test/files/valid/multi-file/api.yaml\n');
+    expect(output.stdout).to.be.match(/Created test[/\\].tmp[/\\]bundled.json from test[/\\]files[/\\]valid[/\\]multi-file[/\\]api.yaml\n/);
 
     let expectedOutput = fs.readFileSync('test/files/valid/multi-file/api.bundled.json', 'utf8');
     let actualOutput = fs.readFileSync('test/.tmp/bundled.json', 'utf8');
@@ -88,7 +89,7 @@ describe('swagger-cli bundle', () => {
 
     expect(output.stderr).to.be.empty;
     expect(output.status).to.equal(0);
-    expect(output.stdout).to.be.equal('Created test/.tmp/bundled.json from test/files/valid/circular-refs/api.yaml\n');
+    expect(output.stdout).to.be.match(/Created test[/\\].tmp[/\\]bundled.json from test[/\\]files[/\\]valid[/\\]circular-refs[/\\]api.yaml\n/);
 
     let expectedOutput = fs.readFileSync('test/files/valid/circular-refs/api.bundled.json', 'utf8');
     let actualOutput = fs.readFileSync('test/.tmp/bundled.json', 'utf8');
@@ -127,7 +128,7 @@ describe('swagger-cli bundle', () => {
 
     expect(output.stderr).to.be.empty;
     expect(output.status).to.equal(0);
-    expect(output.stdout).to.be.equal('Created test/.tmp/dereferenced.json from test/files/valid/single-file/api.yaml\n');
+    expect(output.stdout).to.be.match(/Created test[/\\].tmp[/\\]dereferenced.json from test[/\\]files[/\\]valid[/\\]single-file[/\\]api.yaml\n/);
 
     let expectedOutput = fs.readFileSync('test/files/valid/single-file/api.dereferenced.4-spaces.json', 'utf8');
     let actualOutput = fs.readFileSync('test/.tmp/dereferenced.json', 'utf8');
@@ -139,10 +140,8 @@ describe('swagger-cli bundle', () => {
 
     expect(output.stdout).to.be.empty;
     expect(output.status).to.equal(1);
-    expect(output.stderr).to.equal(
-      'Error resolving $ref pointer "test/files/invalid/internal-ref/api.yaml#/definitions/person". \n' +
-      'Token "definitions" does not exist.\n'
-    );
+    expect(output.stderr).to.include('Error resolving $ref pointer ');
+    expect(output.stderr).to.include('Token "definitions" does not exist.\n');
   });
 
   it('should fail if a referenced file does not exist', () => {
@@ -150,10 +149,8 @@ describe('swagger-cli bundle', () => {
 
     expect(output.stdout).to.be.empty;
     expect(output.status).to.equal(1);
-    expect(output.stderr).to.equal(
-      'Error opening file "test/files/invalid/external-ref/address.yaml" \n' +
-      "ENOENT: no such file or directory, open 'test/files/invalid/external-ref/address.yaml'\n"
-    );
+    expect(output.stderr).to.include('Error opening file ');
+    expect(output.stderr).to.include('ENOENT: no such file or directory');
   });
 
   it('should output the full error stack in debug mode', () => {
@@ -161,10 +158,8 @@ describe('swagger-cli bundle', () => {
 
     expect(output.stdout).not.to.be.empty;
     expect(output.status).to.equal(1);
-    expect(output.stderr).to.include(
-      'Error opening file "test/files/invalid/external-ref/address.yaml" \n' +
-      "ENOENT: no such file or directory, open 'test/files/invalid/external-ref/address.yaml'\n"
-    );
+    expect(output.stderr).to.contain('Error opening file ');
+    expect(output.stderr).to.include('ENOENT: no such file or directory');
     expect(output.stderr).to.include('at ReadFileContext');
   });
 

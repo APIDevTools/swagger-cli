@@ -66,10 +66,8 @@ describe('swagger-cli validate', () => {
 
     expect(output.stdout).to.be.empty;
     expect(output.status).to.equal(1);
-    expect(output.stderr).to.equal(
-      'Error resolving $ref pointer "test/files/invalid/internal-ref/api.yaml#/definitions/person". \n' +
-      'Token "definitions" does not exist.\n'
-    );
+    expect(output.stderr).to.include('Error resolving $ref pointer ');
+    expect(output.stderr).to.include('Token "definitions" does not exist.\n');
   });
 
   it('should fail validation if a referenced file does not exist', () => {
@@ -77,10 +75,8 @@ describe('swagger-cli validate', () => {
 
     expect(output.stdout).to.be.empty;
     expect(output.status).to.equal(1);
-    expect(output.stderr).to.equal(
-      'Error opening file "test/files/invalid/external-ref/address.yaml" \n' +
-      "ENOENT: no such file or directory, open 'test/files/invalid/external-ref/address.yaml'\n"
-    );
+    expect(output.stderr).to.contain('Error opening file ');
+    expect(output.stderr).to.contain('ENOENT: no such file or directory');
   });
 
   it('should output the full error stack in debug mode', () => {
@@ -88,10 +84,8 @@ describe('swagger-cli validate', () => {
 
     expect(output.stdout).not.to.be.empty;
     expect(output.status).to.equal(1);
-    expect(output.stderr).to.include(
-      'Error opening file "test/files/invalid/external-ref/address.yaml" \n' +
-      "ENOENT: no such file or directory, open 'test/files/invalid/external-ref/address.yaml'\n"
-    );
+    expect(output.stderr).to.include('Error opening file ');
+    expect(output.stderr).to.include('ENOENT: no such file or directory');
     expect(output.stderr).to.include('at ReadFileContext');
   });
 
