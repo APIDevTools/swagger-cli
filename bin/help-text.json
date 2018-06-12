@@ -45,8 +45,11 @@
     "",
     "    -r, --dereference           Fully dereference all $ref pointers",
     "",
-    "    -f, --format <spaces>       Formats the JSON output using the given number of spaces",
+    "    -f, --format <spaces>       Formats the output using the given number of spaces",
     "                                (the default is 2 spaces)",
+    "",
+    "    -t, --type <json|yaml>      Defines the output file type",
+    "                                (the default is JSON)",
     ""
   ]
 }
