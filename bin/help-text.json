@@ -48,7 +48,7 @@
     "    -f, --format <spaces>       Formats the output using the given number of spaces",
     "                                (the default is 2 spaces)",
     "",
-    "    -t, --type <json|yaml>      Defines the output file type",
+    "    -t, --type <filetype>       Defines the output file type. The valid values are: json, yaml",
     "                                (the default is JSON)",
     ""
   ]

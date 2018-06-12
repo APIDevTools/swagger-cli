@@ -75,6 +75,8 @@ By default, the `swagger-cli bundle` command tries to keep the output file size 
 
 If you don't specify the `--output-file` option, then the bundled API will be written to stdout, which means you can pipe it to other commands.
 
+The result of this method by default is written as JSON. It can be changed to YAML with the `--type` option, by passing the `yaml` value.
+
 ```bash
 swagger-cli bundle [options] <file>
 
@@ -85,6 +87,9 @@ Options:
 
     -f, --format <spaces>       Formats the JSON output using the given number of spaces
                                 (the default is 2 spaces)
+
+    -t, --type <filetype>       Defines the output file type. The valid values are: json, yaml
+                                (the default is JSON)
 ```
 
 
