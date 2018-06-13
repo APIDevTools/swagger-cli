@@ -6,6 +6,8 @@ const chalk = require('chalk');
 const api = require('../');
 const helpText = require('./help-text.json');
 
+const validTypeOptions = ['json', 'yaml'];
+
 (function main () {
   let args = parseArgs();
   let command = args.command;
@@ -15,6 +17,13 @@ const helpText = require('./help-text.json');
   if (options.debug) {
     // Enable debug output
     process.env.DEBUG = 'swagger:*,json-schema-ref-parser';
+  }
+
+  // Check if the output type contains a valid value
+  if (validTypeOptions.indexOf(options.type) === -1) {
+    const validValues = validTypeOptions.join(', ');
+    console.error('Error: type value "' + options.type + '" is invalid. Valid values: ' + validValues);
+    process.exit(2);
   }
 
   if (options.help) {
@@ -69,6 +78,12 @@ function parseArgs () {
       type: 'number',
       default: 2,
     })
+    .option('t', {
+      alias: 'type',
+      type: 'string',
+      normalize: true,
+      default: 'json',
+    })
     .option('d', {
       alias: 'debug',
       type: 'boolean',
@@ -99,6 +114,7 @@ function parseArgs () {
       outfile: args.outfile,
       dereference: args.dereference,
       format: args.format || 2,
+      type: args.type || 'json',
       debug: args.debug,
       help: args.help,
     }

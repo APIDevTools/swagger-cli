@@ -1,0 +1,79 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: API with circular references
+paths:
+  /pet:
+    get:
+      responses:
+        '200':
+          description: Returns a pet
+          schema:
+            $ref: '#/definitions/pet'
+  /thing:
+    get:
+      responses:
+        '200':
+          description: Returns a thing
+          schema:
+            $ref: '#/definitions/thing'
+  /person:
+    get:
+      responses:
+        '200':
+          description: Returns a person
+          schema:
+            $ref: '#/definitions/person'
+  /parent:
+    get:
+      responses:
+        '200':
+          description: Returns a parent
+          schema:
+            $ref: '#/definitions/parent'
+definitions:
+  pet:
+    title: pet
+    type: object
+    properties:
+      name:
+        type: string
+      age:
+        type: number
+      species:
+        type: string
+        enum:
+          - cat
+          - dog
+          - bird
+          - fish
+  thing:
+    $ref: '#/definitions/thing'
+  person:
+    title: person
+    type: object
+    properties:
+      name:
+        type: string
+      spouse:
+        $ref: '#/definitions/person'
+  parent:
+    title: parent
+    type: object
+    properties:
+      name:
+        type: string
+      children:
+        type: array
+        items:
+          $ref: '#/definitions/child'
+  child:
+    title: child
+    type: object
+    properties:
+      name:
+        type: string
+      parents:
+        type: array
+        items:
+          $ref: '#/definitions/parent'
