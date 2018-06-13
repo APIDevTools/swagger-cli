@@ -20,9 +20,9 @@ const validTypeOptions = ['json', 'yaml'];
   }
 
   // Check if the output type contains a valid value
-  if (!validTypeOptions.includes(options.type)) {
+  if (validTypeOptions.indexOf(options.type) === -1) {
     const validValues = validTypeOptions.join(', ');
-    console.error('Error: type value is invalid. Valid values: ' + validValues);
+    console.error('Error: type value "' + options.type + '" is invalid. Valid values: ' + validValues);
     process.exit(2);
   }
 
