@@ -1,12 +1,12 @@
 Swagger/OpenAPI CLI
 ============================
 
-[![Build Status](https://api.travis-ci.org/BigstickCarpet/swagger-cli.svg?branch=master)](https://travis-ci.org/BigstickCarpet/swagger-cli)
-[![Dependencies](https://david-dm.org/BigstickCarpet/swagger-cli.svg)](https://david-dm.org/BigstickCarpet/swagger-cli)
-[![Codacy Score](https://api.codacy.com/project/badge/Grade/b20026f43c2d4a149088ba0ad2ab6355)](https://www.codacy.com/public/jamesmessinger/swagger-cli)
-[![Inline docs](http://inch-ci.org/github/BigstickCarpet/swagger-cli.svg?branch=master&style=shields)](http://inch-ci.org/github/BigstickCarpet/swagger-cli)
+[![Build Status](https://api.travis-ci.org/APIDevTools/swagger-cli.svg?branch=master)](https://travis-ci.org/APIDevTools/swagger-cli)
+[![Dependencies](https://david-dm.org/APIDevTools/swagger-cli.svg)](https://david-dm.org/APIDevTools/swagger-cli)
+[![Codacy Score](https://api.codacy.com/project/badge/Grade/b20026f43c2d4a149088ba0ad2ab6355)](https://www.codacy.com/public/JamesMessinger/swagger-cli)
+[![Inline docs](https://inch-ci.org/github/APIDevTools/swagger-cli.svg?branch=master&style=shields)](https://inch-ci.org/github/APIDevTools/swagger-cli)
 
-[![npm](http://img.shields.io/npm/v/swagger-cli.svg)](https://www.npmjs.com/package/swagger-cli)
+[![npm](https://img.shields.io/npm/v/swagger-cli.svg)](https://www.npmjs.com/package/swagger-cli)
 [![License](https://img.shields.io/npm/l/swagger-cli.svg)](LICENSE)
 
 
@@ -19,9 +19,9 @@ Features
 
 Related Projects
 --------------------------
-- [Swagger Parser](https://github.com/BigstickCarpet/swagger-parser)
-- [Swagger Express Middleware](https://github.com/BigstickCarpet/swagger-express-middleware)
-- [Swagger Server](https://github.com/BigstickCarpet/swagger-server)
+- [Swagger Parser](https://github.com/APIDevTools/swagger-parser)
+- [Swagger Express Middleware](https://github.com/APIDevTools/swagger-express-middleware)
+- [Swagger Server](https://github.com/APIDevTools/swagger-server)
 
 
 Installation
@@ -95,13 +95,13 @@ Options:
 
 Contributing
 --------------------------
-I welcome any contributions, enhancements, and bug-fixes.  [File an issue](https://github.com/BigstickCarpet/swagger-cli/issues) on GitHub and [submit a pull request](https://github.com/BigstickCarpet/swagger-cli/pulls).
+I welcome any contributions, enhancements, and bug-fixes.  [File an issue](https://github.com/APIDevTools/swagger-cli/issues) on GitHub and [submit a pull request](https://github.com/APIDevTools/swagger-cli/pulls).
 
 #### Building/Testing
 To build/test the project locally on your computer:
 
 1. **Clone this repo**<br>
-`git clone https://github.com/bigstickcarpet/swagger-cli.git`
+`git clone https://github.com/APIDevTools/swagger-cli.git`
 
 2. **Install dependencies**<br>
 `npm install`

@@ -19,23 +19,23 @@
   ],
   "author": {
     "name": "James Messinger",
-    "url": "https://github.com/BigstickCarpet"
+    "url": "https://jamesmessinger.com"
   },
   "contributors": [
     {
       "name": "James Messinger",
-      "url": "http://bigstickcarpet.com"
+      "url": "https://jamesmessinger.com"
     },
     {
       "name": "Randall Krauskopf",
       "url": "https://github.com/rkrauskopf"
     }
   ],
-  "homepage": "http://bigstickcarpet.com/swagger-parser",
+  "homepage": "https://apidevtools.org/swagger-parser",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/BigstickCarpet/swagger-cli.git"
+    "url": "https://github.com/APIDevTools/swagger-cli.git"
   },
   "main": "lib/index.js",
   "bin": {
