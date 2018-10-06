@@ -32,11 +32,11 @@
     }
   ],
   "homepage": "https://apidevtools.org/swagger-parser",
-  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/APIDevTools/swagger-cli.git"
   },
+  "license": "MIT",
   "main": "lib/index.js",
   "bin": {
     "swagger-cli": "bin/swagger-cli.js"
@@ -45,20 +45,27 @@
     "bin",
     "lib"
   ],
+  "engines": {
+    "node": ">=4.0.0"
+  },
   "scripts": {
     "lint": "eslint bin lib test --fix",
     "test": "mocha && npm run lint",
+    "coverage": "nyc --reporter=text --reporter=lcov mocha",
     "upgrade": "npm-check -u",
     "bump": "bump --prompt --tag --push --all",
     "release": "npm run upgrade && npm test && npm run bump && npm publish"
   },
   "devDependencies": {
     "chai": "^4.2.0",
+    "codacy-coverage": "^3.1.0",
+    "coveralls": "^3.0.2",
     "eslint": "^5.6.1",
     "eslint-config-modular": "^4.2.2",
     "mocha": "^5.2.0",
     "mockery": "^2.1.0",
     "npm-check": "^5.9.0",
+    "nyc": "^13.0.1",
     "rimraf": "^2.4.3",
     "spawn-sync": "^2.0.0",
     "version-bump-prompt": "^4.2.1"
@@ -69,8 +76,5 @@
     "mkdirp": "^0.5.1",
     "swagger-parser": "^6.0.0",
     "yargs": "^12.0.2"
-  },
-  "engines": {
-    "node": ">=4.0.0"
   }
 }

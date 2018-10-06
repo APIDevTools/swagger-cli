@@ -1,5 +1,7 @@
 # Travis CI config
 # http://docs.travis-ci.com/user/languages/javascript-with-nodejs/
+# https://docs.travis-ci.com/user/customizing-the-build/
+# https://docs.travis-ci.com/user/migrating-from-legacy/
 
 sudo: false
 language: node_js
@@ -8,3 +10,14 @@ matrix:
     - node_js: 6
     - node_js: 8
     - node_js: 10
+
+script:
+  - npm run coverage
+  - npm run lint
+
+after_success:
+  # send code-coverage data to Codacy
+  - cat ./coverage/lcov.info | node_modules/.bin/codacy-coverage -p .
+
+  # send code-coverage data to Coveralls
+  - cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js
