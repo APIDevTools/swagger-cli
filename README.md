@@ -37,7 +37,7 @@ npm install -g swagger-cli
 Usage
 --------------------------
 
-```bash
+```
 swagger-cli <command> [options] <file>
 
 Commands:
@@ -58,7 +58,7 @@ The `swagger-cli validate` command will validate your Swagger/OpenAPI definition
 
 The command will exit with a non-zero code if the API is invalid.
 
-```bash
+```
 swagger-cli validate [options] <file>
 
 Options:
@@ -78,7 +78,7 @@ If you don't specify the `--output-file` option, then the bundled API will be wr
 
 The result of this method by default is written as JSON. It can be changed to YAML with the `--type` option, by passing the `yaml` value.
 
-```bash
+```
 swagger-cli bundle [options] <file>
 
 Options:
