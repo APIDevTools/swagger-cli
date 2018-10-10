@@ -22,7 +22,6 @@ Related Projects
 --------------------------
 - [Swagger Parser](https://github.com/APIDevTools/swagger-parser)
 - [Swagger Express Middleware](https://github.com/APIDevTools/swagger-express-middleware)
-- [Swagger Server](https://github.com/APIDevTools/swagger-server)
 
 
 Installation
