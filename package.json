@@ -31,7 +31,7 @@
       "url": "https://github.com/rkrauskopf"
     }
   ],
-  "homepage": "https://apidevtools.org/swagger-parser",
+  "homepage": "https://apidevtools.org/swagger-cli/",
   "repository": {
     "type": "git",
     "url": "https://github.com/APIDevTools/swagger-cli.git"
