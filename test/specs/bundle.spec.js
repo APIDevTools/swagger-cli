@@ -7,7 +7,7 @@ const isWindows = process.platform === 'win32';
 
 describe('swagger-cli bundle', () => {
 
-  function readFile(path) {
+  function readFile (path) {
     let contents = fs.readFileSync(path, 'utf8');
     if (isWindows) {
       return contents.replace(/\r\n/g, '\n');
