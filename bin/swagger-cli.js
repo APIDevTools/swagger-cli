@@ -1,12 +1,12 @@
 #!/usr/bin/env node
-'use strict';
+"use strict";
 
-const yargs = require('yargs');
-const chalk = require('chalk');
-const api = require('../');
-const helpText = require('./help-text.json');
+const yargs = require("yargs");
+const chalk = require("chalk");
+const api = require("../");
+const helpText = require("./help-text.json");
 
-const validTypeOptions = ['json', 'yaml'];
+const validTypeOptions = ["json", "yaml"];
 
 (function main () {
   let args = parseArgs();
@@ -16,12 +16,12 @@ const validTypeOptions = ['json', 'yaml'];
 
   if (options.debug) {
     // Enable debug output
-    process.env.DEBUG = 'swagger:*,json-schema-ref-parser';
+    process.env.DEBUG = "swagger:*,json-schema-ref-parser";
   }
 
   // Check if the output type contains a valid value
   if (validTypeOptions.indexOf(options.type) === -1) {
-    const validValues = validTypeOptions.join(', ');
+    const validValues = validTypeOptions.join(", ");
     console.error('Error: type value "' + options.type + '" is invalid. Valid values: ' + validValues);
     process.exit(2);
   }
@@ -31,17 +31,17 @@ const validTypeOptions = ['json', 'yaml'];
     console.log(getHelpText(command));
     process.exit(0);
   }
-  else if (command === 'validate' && file) {
+  else if (command === "validate" && file) {
     // Validate an API
     validate(file, options);
   }
-  else if (command === 'bundle' && file) {
+  else if (command === "bundle" && file) {
     // Bundle a multi-file API
     bundle(file, options);
   }
   else {
     // Invalid args.  Show help text and exit with non-zero
-    console.error('Error: Invalid arguments\n');
+    console.error("Error: Invalid arguments\n");
     console.error(getHelpText(command));
     process.exit(1);
   }
@@ -56,52 +56,52 @@ const validTypeOptions = ['json', 'yaml'];
 function parseArgs () {
   // Configure the argument parser
   yargs
-    .option('schema', {
-      type: 'boolean',
+    .option("schema", {
+      type: "boolean",
       default: true,
     })
-    .option('spec', {
-      type: 'boolean',
+    .option("spec", {
+      type: "boolean",
       default: true,
     })
-    .option('o', {
-      alias: 'outfile',
-      type: 'string',
+    .option("o", {
+      alias: "outfile",
+      type: "string",
       normalize: true,
     })
-    .option('r', {
-      alias: 'dereference',
-      type: 'boolean',
+    .option("r", {
+      alias: "dereference",
+      type: "boolean",
     })
-    .option('t', {
-      alias: 'type',
-      type: 'string',
+    .option("t", {
+      alias: "type",
+      type: "string",
       normalize: true,
-      default: 'json',
+      default: "json",
     })
-    .option('f', {
-      alias: 'format',
-      type: 'number',
+    .option("f", {
+      alias: "format",
+      type: "number",
       default: 2,
     })
-    .option('w', {
-      alias: 'wrap',
-      type: 'number',
+    .option("w", {
+      alias: "wrap",
+      type: "number",
       default: Infinity,
     })
-    .option('d', {
-      alias: 'debug',
-      type: 'boolean',
+    .option("d", {
+      alias: "debug",
+      type: "boolean",
     })
-    .option('h', {
-      alias: 'help',
-      type: 'boolean',
+    .option("h", {
+      alias: "help",
+      type: "boolean",
     });
 
   // Show the version number on "--version" or "-v"
   yargs
     .version()
-    .alias('v', 'version');
+    .alias("v", "version");
 
   // Disable the default "--help" behavior
   yargs.help(false);
@@ -119,7 +119,7 @@ function parseArgs () {
       outfile: args.outfile,
       dereference: args.dereference,
       format: args.format || 2,
-      type: args.type || 'json',
+      type: args.type || "json",
       wrap: args.wrap || Infinity,
       debug: args.debug,
       help: args.help,
@@ -145,7 +145,7 @@ function parseArgs () {
 function validate (file, options) {
   api.validate(file, options)
     .then(() => {
-      console.log(file, 'is valid');
+      console.log(file, "is valid");
     })
     .catch(errorHandler);
 }
@@ -161,7 +161,7 @@ function bundle (file, options) {
   api.bundle(file, options)
     .then((bundled) => {
       if (options.outfile) {
-        console.log('Created %s from %s', options.outfile, file);
+        console.log("Created %s from %s", options.outfile, file);
       }
       else {
         // Write the bundled API to stdout
@@ -180,7 +180,7 @@ function bundle (file, options) {
  */
 function getHelpText (commandName) {
   let lines = helpText[commandName] || helpText.default;
-  return lines.join('\n');
+  return lines.join("\n");
 }
 
 
