@@ -87,11 +87,14 @@ Options:
 
     -r, --dereference           Fully dereference all $ref pointers
 
-    -f, --format <spaces>       Formats the JSON output using the given number of spaces
+    -f, --format <spaces>       Formats the output using the given number of spaces
                                 (the default is 2 spaces)
 
     -t, --type <filetype>       Defines the output file type. The valid values are: json, yaml
                                 (the default is JSON)
+
+    -w, --wrap <column>         Set the line length for YAML strings
+                                (the default is no wrapping)
 ```
 
 

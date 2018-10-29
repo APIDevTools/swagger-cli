@@ -73,16 +73,21 @@ function parseArgs () {
       alias: 'dereference',
       type: 'boolean',
     })
-    .option('f', {
-      alias: 'format',
-      type: 'number',
-      default: 2,
-    })
     .option('t', {
       alias: 'type',
       type: 'string',
       normalize: true,
       default: 'json',
+    })
+    .option('f', {
+      alias: 'format',
+      type: 'number',
+      default: 2,
+    })
+    .option('w', {
+      alias: 'wrap',
+      type: 'number',
+      default: Infinity,
     })
     .option('d', {
       alias: 'debug',
@@ -115,6 +120,7 @@ function parseArgs () {
       dereference: args.dereference,
       format: args.format || 2,
       type: args.type || 'json',
+      wrap: args.wrap || Infinity,
       debug: args.debug,
       help: args.help,
     }

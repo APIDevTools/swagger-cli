@@ -50,6 +50,9 @@
     "",
     "    -t, --type <filetype>       Defines the output file type. The valid values are: json, yaml",
     "                                (the default is JSON)",
+    "",
+    "    -w, --wrap <column>         Set the line length for YAML strings",
+    "                                (the default is no wrapping)",
     ""
   ]
 }
