@@ -5,10 +5,17 @@ info:
 paths:
     /people:
         get:
+            summary: This is a single-line string
             responses:
                 '200':
-                    description: Returns the list of people
+                    description: |
+                        This
+                        is
+                        a
+                        multi-line
+                        string
                     schema:
+                        description: This is a really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really long string
                         type: array
                         items:
                             $ref: '#/definitions/person'

@@ -251,6 +251,15 @@ describe('swagger-cli bundle', () => {
     expect(output.stdout).to.be.equal(expectedOutput + '\n');
   });
 
+  it('should use wrap YAML output at 80 characters (--wrap 80)', () => {
+    let output = helper.run('bundle', '-t', 'yaml', '--wrap', '80', 'test/files/valid/single-file/api.yaml');
+    let expectedOutput = readFile('test/files/valid/single-file/api.bundled.wrap-80.yaml');
+
+    expect(output.stderr).to.be.empty;
+    expect(output.status).to.equal(0);
+    expect(output.stdout).to.be.equal(expectedOutput + '\n');
+  });
+
   it('should use all three options together (-rf=4 -o=<file>)', () => {
     let output = helper.run('bundle', '-rf=4', '-o=test/.tmp/dereferenced.json', 'test/files/valid/single-file/api.yaml');
 
