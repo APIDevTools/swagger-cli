@@ -1,6 +1,6 @@
 {
   "name": "swagger-cli",
-  "version": "2.1.3",
+  "version": "2.2.0",
   "description": "Swagger 2.0 and OpenAPI 3.0 command-line tool",
   "keywords": [
     "swagger",
