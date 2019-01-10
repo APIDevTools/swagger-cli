@@ -3,11 +3,11 @@ Swagger/OpenAPI CLI
 
 [![Cross-Platform Compatibility](https://apidevtools.org/img/os-badges.svg)](https://travis-ci.com/APIDevTools/swagger-cli)
 [![Build Status](https://api.travis-ci.com/APIDevTools/swagger-cli.svg?branch=master)](https://travis-ci.com/APIDevTools/swagger-cli)
-
 [![Coverage Status](https://coveralls.io/repos/github/APIDevTools/swagger-cli/badge.svg?branch=master)](https://coveralls.io/github/APIDevTools/swagger-cli?branch=master)
-[![Dependencies](https://david-dm.org/APIDevTools/swagger-cli.svg)](https://david-dm.org/APIDevTools/swagger-cli)
+
 
 [![npm](https://img.shields.io/npm/v/swagger-cli.svg)](https://www.npmjs.com/package/swagger-cli)
+[![Dependencies](https://david-dm.org/APIDevTools/swagger-cli.svg)](https://david-dm.org/APIDevTools/swagger-cli)
 [![License](https://img.shields.io/npm/l/swagger-cli.svg)](LICENSE)
 
 
