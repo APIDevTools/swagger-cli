@@ -1,15 +1,13 @@
 Swagger/OpenAPI CLI
 ============================
 
-[![Cross-Platform Compatibility](https://apidevtools.org/img/os-badges.svg)](https://travis-ci.org/APIDevTools/swagger-cli)
-[![Build Status](https://api.travis-ci.org/APIDevTools/swagger-cli.svg?branch=master)](https://travis-ci.org/APIDevTools/swagger-cli)
-
+[![Cross-Platform Compatibility](https://apidevtools.org/img/os-badges.svg)](https://travis-ci.com/APIDevTools/swagger-cli)
+[![Build Status](https://api.travis-ci.com/APIDevTools/swagger-cli.svg?branch=master)](https://travis-ci.com/APIDevTools/swagger-cli)
 [![Coverage Status](https://coveralls.io/repos/github/APIDevTools/swagger-cli/badge.svg?branch=master)](https://coveralls.io/github/APIDevTools/swagger-cli?branch=master)
-[![Dependencies](https://david-dm.org/APIDevTools/swagger-cli.svg)](https://david-dm.org/APIDevTools/swagger-cli)
-[![Codacy Score](https://api.codacy.com/project/badge/Grade/b20026f43c2d4a149088ba0ad2ab6355)](https://www.codacy.com/public/JamesMessinger/swagger-cli)
-[![Inline docs](https://inch-ci.org/github/APIDevTools/swagger-cli.svg?branch=master&style=shields)](https://inch-ci.org/github/APIDevTools/swagger-cli)
+
 
 [![npm](https://img.shields.io/npm/v/swagger-cli.svg)](https://www.npmjs.com/package/swagger-cli)
+[![Dependencies](https://david-dm.org/APIDevTools/swagger-cli.svg)](https://david-dm.org/APIDevTools/swagger-cli)
 [![License](https://img.shields.io/npm/l/swagger-cli.svg)](LICENSE)
 
 
@@ -118,3 +116,11 @@ To build/test the project locally on your computer:
 License
 --------------------------
 Swagger CLI is 100% free and open-source, under the [MIT license](LICENSE). Use it however you want.
+
+Big Thanks To
+--------------------------
+Thanks to these awesome companies for their support of Open Source developers ❤
+
+[![Travis CI](https://jsdevtools.org/img/badges/travis-ci.svg)](https://travis-ci.com)
+[![SauceLabs](https://jsdevtools.org/img/badges/sauce-labs.svg)](https://saucelabs.com)
+[![Coveralls](https://jsdevtools.org/img/badges/coveralls.svg)](https://coveralls.io)
