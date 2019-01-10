@@ -6,8 +6,6 @@ Swagger/OpenAPI CLI
 
 [![Coverage Status](https://coveralls.io/repos/github/APIDevTools/swagger-cli/badge.svg?branch=master)](https://coveralls.io/github/APIDevTools/swagger-cli?branch=master)
 [![Dependencies](https://david-dm.org/APIDevTools/swagger-cli.svg)](https://david-dm.org/APIDevTools/swagger-cli)
-[![Codacy Score](https://api.codacy.com/project/badge/Grade/b20026f43c2d4a149088ba0ad2ab6355)](https://www.codacy.com/public/JamesMessinger/swagger-cli)
-[![Inline docs](https://inch-ci.org/github/APIDevTools/swagger-cli.svg?branch=master&style=shields)](https://inch-ci.org/github/APIDevTools/swagger-cli)
 
 [![npm](https://img.shields.io/npm/v/swagger-cli.svg)](https://www.npmjs.com/package/swagger-cli)
 [![License](https://img.shields.io/npm/l/swagger-cli.svg)](LICENSE)
