@@ -66,6 +66,18 @@ Options:
     --no-spec               Do NOT validate against the Swagger/OpenAPI specification
 ```
 
+#### Git pre-commit hook
+
+The `swagger-cli validate` command can also be integrated as part of a git pre-commit hook. 
+```
+-   repo: https://github.com/brianroch/swagger-cli
+    rev: v2.2.1
+    hooks:
+    - id: swagger-validation
+      args: ["validate", "<path to root swagger>"]
+```
+
+The intention is to point to single root swagger that references multiple swagger definitions.
 
 ### Combine Multiple Files
 
