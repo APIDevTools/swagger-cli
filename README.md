@@ -70,7 +70,7 @@ Options:
 
 The `swagger-cli validate` command can also be integrated as part of a git pre-commit hook. 
 ```
--   repo: https://github.com/brianroch/swagger-cli
+-   repo: https://github.com/APIDevTools/swagger-cli
     rev: v2.2.1
     hooks:
     - id: swagger-validation
