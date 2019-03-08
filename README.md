@@ -66,6 +66,19 @@ Options:
     --no-spec               Do NOT validate against the Swagger/OpenAPI specification
 ```
 
+#### Git pre-commit hook
+
+There is a useful Python tool called [pre-commit](https://pre-commit.com/) that can be used to execute a wide suite of pre-commit checks. The `swagger-cli validate` command can be integrated as part of a git pre-commit hook by adding the following configuration to the `repos` entry of an existing `.pre-commit-config.yaml` file.
+
+```
+-   repo: https://github.com/APIDevTools/swagger-cli
+    rev: v2.2.1
+    hooks:
+    - id: swagger-validation
+      args: ["validate", "<path to root swagger>"]
+```
+
+The intention is to point to single root swagger that references multiple swagger definitions. The above hook will execute the `swagger-cli validation` against the root swagger anytime that a file matching the pattern `.*swagger.*\.(json|yaml|yml)` is modified. Any failures in this validation will prevent the git commit from being processed. 
 
 ### Combine Multiple Files
 
