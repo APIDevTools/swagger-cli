@@ -28,7 +28,7 @@ Related Projects
 
 Installation
 --------------------------
-Install using [npm](https://docs.npmjs.com/getting-started/what-is-npm):
+Install using [npm](https://docs.npmjs.com/about-npm/):
 
 ```bash
 npm install -g swagger-cli
