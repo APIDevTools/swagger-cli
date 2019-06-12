@@ -1,6 +1,6 @@
 {
   "name": "swagger-cli",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Swagger 2.0 and OpenAPI 3.0 command-line tool",
   "keywords": [
     "swagger",
@@ -54,27 +54,26 @@
     "coverage": "nyc --reporter=text --reporter=lcov mocha",
     "upgrade": "npm-check -u",
     "bump": "bump --prompt --tag --push --all",
-    "release": "npm run upgrade && npm test && npm run bump && npm publish"
+    "release": "npm run upgrade && npm test && npm run bump"
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "codacy-coverage": "^3.2.0",
     "coveralls": "^3.0.2",
-    "eslint": "^5.8.0",
-    "eslint-config-modular": "^5.0.0",
+    "eslint": "^5.12.0",
+    "eslint-config-modular": "^6.0.0",
     "mocha": "^5.2.0",
     "mockery": "^2.1.0",
     "npm-check": "^5.9.0",
     "nyc": "^13.1.0",
-    "rimraf": "^2.4.3",
+    "rimraf": "^2.6.3",
     "spawn-sync": "^2.0.0",
-    "version-bump-prompt": "^4.2.1"
+    "version-bump-prompt": "^4.2.2"
   },
   "dependencies": {
-    "chalk": "^2.4.1",
-    "js-yaml": "^3.12.0",
+    "chalk": "^2.4.2",
+    "js-yaml": "^3.12.1",
     "mkdirp": "^0.5.1",
-    "swagger-parser": "^6.0.1",
-    "yargs": "^12.0.2"
+    "swagger-parser": "^6.0.3",
+    "yargs": "^12.0.5"
   }
 }

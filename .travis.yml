@@ -3,8 +3,7 @@
 # https://docs.travis-ci.com/user/customizing-the-build/
 # https://docs.travis-ci.com/user/migrating-from-legacy/
 
-dist: trusty
-sudo: false
+filter_secrets: false
 language: node_js
 
 node_js:
@@ -17,13 +16,28 @@ os:
   - osx
   - windows
 
-script: npm run lint && npm run coverage
+before_script:
+  - npm run lint
+
+script:
+  - npm run coverage
 
 after_success:
-  # FIXME: Travis-CI does not currently support environment variables (i.e. CODACY_PROJECT_TOKEN)
-  #        on Windows. https://github.com/travis-ci/travis-build/pull/1544
-  # send code-coverage data to Codacy
-  #- cat ./coverage/lcov.info | node_modules/.bin/codacy-coverage -p .
 
   # send code-coverage data to Coveralls
   - cat ./coverage/lcov.info | coveralls
+
+jobs:
+  include:
+    - stage: Deploy
+      name: Publish to npm
+      script: true
+      after_success: true
+      deploy:
+        provider: npm
+        email: $NPM_EMAIL
+        api_key: $NPM_API_KEY
+        skip_cleanup: true
+        on:
+          tags: true
+          branch: master
