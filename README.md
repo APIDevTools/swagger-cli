@@ -53,7 +53,7 @@ Options:
 
 ### Validate an API
 
-The `swagger-cli validate` command will validate your Swagger/OpenAPI definition against the [Swagger 2.0 schema](https://github.com/reverb/swagger-spec/blob/master/schemas/v2.0/schema.json) or [OpenAPI 3.0 Schema](https://github.com/kogosoftwarellc/open-api/blob/master/packages/openapi-schema-validation/schema/openapi-3.0.json).  It also performs additional validations against the [specification](https://github.com/swagger-api/swagger-spec/blob/master/versions/2.0.md), which will catch some things that aren't covered by the schema, such as duplicate parameters, invalid MIME types, etc.
+The `swagger-cli validate` command will validate your Swagger/OpenAPI definition against the [Swagger 2.0 schema](https://github.com/OAI/OpenAPI-Specification/blob/master/schemas/v2.0/schema.json) or [OpenAPI 3.0 Schema](https://github.com/OAI/OpenAPI-Specification/blob/master/schemas/v3.0/schema.json).  It also performs additional validations against the [specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md), which will catch some things that aren't covered by the schema, such as duplicate parameters, invalid MIME types, etc.
 
 The command will exit with a non-zero code if the API is invalid.
 
@@ -78,11 +78,11 @@ There is a useful Python tool called [pre-commit](https://pre-commit.com/) that 
       args: ["validate", "<path to root swagger>"]
 ```
 
-The intention is to point to single root swagger that references multiple swagger definitions. The above hook will execute the `swagger-cli validation` against the root swagger anytime that a file matching the pattern `.*swagger.*\.(json|yaml|yml)` is modified. Any failures in this validation will prevent the git commit from being processed. 
+The intention is to point to single root swagger that references multiple swagger definitions. The above hook will execute the `swagger-cli validation` against the root swagger anytime that a file matching the pattern `.*swagger.*\.(json|yaml|yml)` is modified. Any failures in this validation will prevent the git commit from being processed.
 
 ### Combine Multiple Files
 
-The Swagger and OpenAPI specs allows you to split your API definition across multiple files using [`$ref` pointers](https://github.com/swagger-api/swagger-spec/blob/master/versions/2.0.md#reference-object) to reference each file. You can use the `swagger-cli bundle` command to combine all of those referenced files into a single file, which is useful for distribution or interoperation with other tools.
+The Swagger and OpenAPI specs allows you to split your API definition across multiple files using [`$ref` pointers](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#reference-object) to reference each file. You can use the `swagger-cli bundle` command to combine all of those referenced files into a single file, which is useful for distribution or interoperation with other tools.
 
 By default, the `swagger-cli bundle` command tries to keep the output file size as small as possible, by only embedding each referenced file _once_.  If the same file is referenced multiple times, then any subsequent references are simply modified to point to the _single_ inlined copy of the file.  If you want to produce a bundled file without _any_ `$ref` pointers, then add the `--dereference` option.  This will result in a larger file size, since multiple references to the same file will result in that file being embedded multiple times.
 
