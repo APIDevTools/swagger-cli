@@ -1,7 +1,7 @@
 Swagger/OpenAPI CLI
 ============================
 
-[![Cross-Platform Compatibility](https://apidevtools.org/img/os-badges.svg)](https://travis-ci.com/APIDevTools/swagger-cli)
+[![Cross-Platform Compatibility](https://apitools.dev/img/os-badges.svg)](https://travis-ci.com/APIDevTools/swagger-cli)
 [![Build Status](https://api.travis-ci.com/APIDevTools/swagger-cli.svg?branch=master)](https://travis-ci.com/APIDevTools/swagger-cli)
 [![Coverage Status](https://coveralls.io/repos/github/APIDevTools/swagger-cli/badge.svg?branch=master)](https://coveralls.io/github/APIDevTools/swagger-cli?branch=master)
 
