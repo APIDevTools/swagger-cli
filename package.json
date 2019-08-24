@@ -58,22 +58,22 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "coveralls": "^3.0.4",
-    "eslint": "^6.0.0",
+    "coveralls": "^3.0.6",
+    "eslint": "^6.2.2",
     "eslint-config-modular": "^7.0.0",
-    "mocha": "^6.1.4",
+    "mocha": "^6.2.0",
     "mockery": "^2.1.0",
     "npm-check": "^5.9.0",
     "nyc": "^14.1.1",
-    "rimraf": "^2.6.3",
+    "rimraf": "^3.0.0",
     "spawn-sync": "^2.0.0",
-    "version-bump-prompt": "^5.0.3"
+    "version-bump-prompt": "^5.0.4"
   },
   "dependencies": {
     "chalk": "^2.4.2",
     "js-yaml": "^3.13.1",
     "mkdirp": "^0.5.1",
-    "swagger-parser": "^8.0.0",
-    "yargs": "^13.2.4"
+    "swagger-parser": "^8.0.1",
+    "yargs": "^14.0.0"
   }
 }
