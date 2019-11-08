@@ -4,5 +4,5 @@
   description: Hook to validate swagger specs.
   language: node
   files: (openapi|swagger).*\.(json|ya?ml)$
-  args: ["validate", "swagger-ui/swagger.yml"]
+  args: ["validate"]
 
