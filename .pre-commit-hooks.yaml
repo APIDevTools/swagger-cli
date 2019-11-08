@@ -3,6 +3,6 @@
   entry: swagger-cli
   description: Hook to validate swagger specs.
   language: node
-  files: .*swagger.*\.(json|yaml|yml)
+  files: (openapi|swagger).*\.(json|ya?ml)$
   args: ["validate", "swagger-ui/swagger.yml"]
 
