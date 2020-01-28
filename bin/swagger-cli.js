@@ -142,12 +142,14 @@ function parseArgs () {
  * @param {boolean} options.schema - Whether to validate against the Swagger/OpenAPI schema
  * @param {boolean} options.spec - Whether to validate against the Swagger/OpenAPI specification
  */
-function validate (file, options) {
-  api.validate(file, options)
-    .then(() => {
-      console.log(file, "is valid");
-    })
-    .catch(errorHandler);
+async function validate (file, options) {
+  try {
+    await api.validate(file, options);
+    console.log(file, "is valid");
+  }
+  catch (error) {
+    errorHandler(error);
+  }
 }
 
 
@@ -157,18 +159,21 @@ function validate (file, options) {
  * @param {string} file - The path of the file to validate
  * @param {object} options - Validation options
  */
-function bundle (file, options) {
-  api.bundle(file, options)
-    .then((bundled) => {
-      if (options.outfile) {
-        console.log("Created %s from %s", options.outfile, file);
-      }
-      else {
-        // Write the bundled API to stdout
-        console.log(bundled);
-      }
-    })
-    .catch(errorHandler);
+async function bundle (file, options) {
+  try {
+    let bundled = await api.bundle(file, options);
+
+    if (options.outfile) {
+      console.log("Created %s from %s", options.outfile, file);
+    }
+    else {
+      // Write the bundled API to stdout
+      console.log(bundled);
+    }
+  }
+  catch (error) {
+    errorHandler(error);
+  }
 }
 
 
