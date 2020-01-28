@@ -46,7 +46,7 @@
     "lib"
   ],
   "engines": {
-    "node": ">=6"
+    "node": ">=10"
   },
   "scripts": {
     "lint": "eslint bin lib test",
