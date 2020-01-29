@@ -48,6 +48,7 @@
   "engines": {
     "node": ">=10"
   },
+  "engineStrict": true,
   "scripts": {
     "lint": "eslint bin lib test",
     "test": "mocha && npm run lint",
