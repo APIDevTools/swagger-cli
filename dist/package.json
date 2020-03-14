@@ -1,0 +1,55 @@
+{
+  "name": "swagger-cli",
+  "version": "X.X.X",
+  "description": "Swagger 2.0 and OpenAPI 3.0 command-line tool",
+  "keywords": [
+    "swagger",
+    "openapi",
+    "open-api",
+    "cli",
+    "rest",
+    "api",
+    "yaml",
+    "parse",
+    "parser",
+    "validate",
+    "validator",
+    "validation",
+    "host"
+  ],
+  "author": {
+    "name": "James Messinger",
+    "url": "https://jamesmessinger.com"
+  },
+  "contributors": [
+    {
+      "name": "James Messinger",
+      "url": "https://jamesmessinger.com"
+    },
+    {
+      "name": "Randall Krauskopf",
+      "url": "https://github.com/rkrauskopf"
+    }
+  ],
+  "homepage": "https://apitools.dev/swagger-cli/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/APIDevTools/swagger-cli.git"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "bin": {
+    "swagger-cli": "swagger-cli.js"
+  },
+  "files": [
+    "swagger-cli.js",
+    "index.js"
+  ],
+  "dependencies": {
+    "@jsdevtools/swagger-cli": "X.X.X"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "engineStrict": true
+}
