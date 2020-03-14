@@ -1,0 +1,49 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run the CLI",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}\\bin\\swagger-cli.js",
+      "stopOnEntry": false,
+      "args": [
+        "--debug",
+        "bundle",
+        "--type=yaml",
+        "--wrap=80",
+        "test/files/valid/single-file/api.yaml"
+      ],
+      "cwd": "${workspaceRoot}",
+      "preLaunchTask": null,
+      "runtimeExecutable": null,
+      "runtimeArgs": [
+        "--nolazy"
+      ],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "console": "internalConsole",
+      "sourceMaps": false
+    },
+    {
+      "name": "Run tests",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}\\node_modules\\mocha\\bin\\_mocha",
+      "stopOnEntry": false,
+      "args": ["--timeout=600000"],
+      "cwd": "${workspaceRoot}",
+      "preLaunchTask": null,
+      "runtimeExecutable": null,
+      "runtimeArgs": [
+        "--nolazy"
+      ],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "console": "internalConsole",
+      "sourceMaps": false
+    }
+  ]
+}
