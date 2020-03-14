@@ -5,10 +5,9 @@ Swagger/OpenAPI CLI
 [![Build Status](https://github.com/APIDevTools/swagger-cli/workflows/CI-CD/badge.svg?branch=master)](https://github.com/APIDevTools/swagger-cli/blob/master/.github/workflows/CI-CD.yaml)
 [![Coverage Status](https://coveralls.io/repos/github/APIDevTools/swagger-cli/badge.svg?branch=master)](https://coveralls.io/github/APIDevTools/swagger-cli?branch=master)
 
-
-[![npm](https://img.shields.io/npm/v/swagger-cli.svg)](https://www.npmjs.com/package/swagger-cli)
+[![npm](https://img.shields.io/npm/v/@apidevtools/swagger-cli.svg)](https://www.npmjs.com/package/@apidevtools/swagger-cli)
 [![Dependencies](https://david-dm.org/APIDevTools/swagger-cli.svg)](https://david-dm.org/APIDevTools/swagger-cli)
-[![License](https://img.shields.io/npm/l/swagger-cli.svg)](LICENSE)
+[![License](https://img.shields.io/npm/l/@apidevtools/swagger-cli.svg)](LICENSE)
 
 
 Features
@@ -29,7 +28,7 @@ Installation
 Install using [npm](https://docs.npmjs.com/about-npm/):
 
 ```bash
-npm install -g swagger-cli
+npm install -g @apidevtools/swagger-cli
 ```
 
 
