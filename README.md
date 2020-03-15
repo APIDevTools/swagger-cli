@@ -3,11 +3,14 @@ Swagger/OpenAPI CLI
 
 [![Cross-Platform Compatibility](https://apitools.dev/img/badges/os-badges.svg)](https://github.com/APIDevTools/swagger-cli/blob/master/.github/workflows/CI-CD.yaml)
 [![Build Status](https://github.com/APIDevTools/swagger-cli/workflows/CI-CD/badge.svg?branch=master)](https://github.com/APIDevTools/swagger-cli/blob/master/.github/workflows/CI-CD.yaml)
+
+[![Dependencies](https://david-dm.org/APIDevTools/swagger-cli.svg)](https://david-dm.org/APIDevTools/swagger-cli)
 [![Coverage Status](https://coveralls.io/repos/github/APIDevTools/swagger-cli/badge.svg?branch=master)](https://coveralls.io/github/APIDevTools/swagger-cli?branch=master)
 
 [![npm](https://img.shields.io/npm/v/@apidevtools/swagger-cli.svg)](https://www.npmjs.com/package/@apidevtools/swagger-cli)
-[![Dependencies](https://david-dm.org/APIDevTools/swagger-cli.svg)](https://david-dm.org/APIDevTools/swagger-cli)
 [![License](https://img.shields.io/npm/l/@apidevtools/swagger-cli.svg)](LICENSE)
+[![Buy us a tree](https://img.shields.io/badge/Treeware-%F0%9F%8C%B3-lightgreen)](https://plant.treeware.earth/APIDevTools/swagger-cli)
+
 
 
 Features
@@ -17,10 +20,12 @@ Features
 - Bundle multiple Swagger/OpenAPI files into one combined file
 
 
+
 Related Projects
 --------------------------
 - [Swagger Parser](https://github.com/APIDevTools/swagger-parser)
 - [Swagger Express Middleware](https://github.com/APIDevTools/swagger-express-middleware)
+
 
 
 Installation
@@ -30,6 +35,7 @@ Install using [npm](https://docs.npmjs.com/about-npm/):
 ```bash
 npm install -g @apidevtools/swagger-cli
 ```
+
 
 
 Usage
@@ -108,6 +114,7 @@ Options:
 ```
 
 
+
 Contributing
 --------------------------
 I welcome any contributions, enhancements, and bug-fixes.  [File an issue](https://github.com/APIDevTools/swagger-cli/issues) on GitHub and [submit a pull request](https://github.com/APIDevTools/swagger-cli/pulls).
@@ -125,9 +132,14 @@ To build/test the project locally on your computer:
 `npm test`
 
 
+
 License
 --------------------------
 Swagger CLI is 100% free and open-source, under the [MIT license](LICENSE). Use it however you want.
+
+This package is [Treeware](http://treeware.earth). If you use it in production, then we ask that you [**buy the world a tree**](https://plant.treeware.earth/APIDevTools/swagger-cli) to thank us for our work. By contributing to the Treeware forest you’ll be creating employment for local families and restoring wildlife habitats.
+
+
 
 Big Thanks To
 --------------------------
