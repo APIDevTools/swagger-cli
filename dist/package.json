@@ -46,7 +46,7 @@
     "index.js"
   ],
   "dependencies": {
-    "@jsdevtools/swagger-cli": "X.X.X"
+    "@apidevtools/swagger-cli": "X.X.X"
   },
   "engines": {
     "node": ">=10"

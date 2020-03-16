@@ -1,2 +1,2 @@
 "use strict";
-module.exports = require("@apidevtool/swagger-cli");
+module.exports = require("@apidevtools/swagger-cli");
