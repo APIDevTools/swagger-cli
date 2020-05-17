@@ -91,7 +91,7 @@ The Swagger and OpenAPI specs allows you to split your API definition across mul
 
 By default, the `swagger-cli bundle` command tries to keep the output file size as small as possible, by only embedding each referenced file _once_.  If the same file is referenced multiple times, then any subsequent references are simply modified to point to the _single_ inlined copy of the file.  If you want to produce a bundled file without _any_ `$ref` pointers, then add the `--dereference` option.  This will result in a larger file size, since multiple references to the same file will result in that file being embedded multiple times.
 
-If you don't specify the `--output-file` option, then the bundled API will be written to stdout, which means you can pipe it to other commands.
+If you don't specify the `--outfile` option, then the bundled API will be written to stdout, which means you can pipe it to other commands.
 
 The result of this method by default is written as JSON. It can be changed to YAML with the `--type` option, by passing the `yaml` value.
 
