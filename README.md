@@ -117,7 +117,7 @@ Options:
 
 Contributing
 --------------------------
-I welcome any contributions, enhancements, and bug-fixes.  [File an issue](https://github.com/APIDevTools/swagger-cli/issues) on GitHub and [submit a pull request](https://github.com/APIDevTools/swagger-cli/pulls).
+I welcome any contributions, enhancements, and bug-fixes.  [Open an issue](https://github.com/APIDevTools/swagger-cli/issues) on GitHub and [submit a pull request](https://github.com/APIDevTools/swagger-cli/pulls).
 
 #### Building/Testing
 To build/test the project locally on your computer:
