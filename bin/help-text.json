@@ -10,7 +10,7 @@
     "",
     "Options:",
     "    -h, --help              Show help for any command",
-    "    -V, --version           Output the CLI version number",
+    "    -v, --version           Output the CLI version number",
     "    -d, --debug             Show debug output",
     ""
   ],
