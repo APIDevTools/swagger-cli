@@ -9,10 +9,8 @@
       "stopOnEntry": false,
       "args": [
         "--debug",
-        "bundle",
-        "--type=yaml",
-        "--wrap=80",
-        "test/files/valid/single-file/api.yaml"
+        "validate",
+        "test/files/invalid/internal-ref/api.yaml"
       ],
       "cwd": "${workspaceRoot}",
       "preLaunchTask": null,
@@ -21,18 +19,23 @@
         "--nolazy"
       ],
       "env": {
-        "NODE_ENV": "development"
+        "NODE_ENV": "development",
+        "NODE_OPTIONS": ""
       },
       "console": "internalConsole",
       "sourceMaps": false
     },
+
     {
       "name": "Run tests",
       "type": "node",
       "request": "launch",
       "program": "${workspaceRoot}\\node_modules\\mocha\\bin\\_mocha",
       "stopOnEntry": false,
-      "args": ["--timeout=600000"],
+      "args": [
+        "--timeout=600000",
+        "--retries=0"
+      ],
       "cwd": "${workspaceRoot}",
       "preLaunchTask": null,
       "runtimeExecutable": null,

@@ -25,7 +25,7 @@ beforeEach(done => {
 exports.run = function (args) {
   // Run the CLI
   args = [cliPath].concat(Array.prototype.slice.call(arguments));
-  let output = spawnSync("node", args);
+  let output = spawnSync("node", args, { env: { ...process.env, NODE_OPTIONS: "" }});
 
   // Normalize the output
   output.stdout = replacePaths(output.stdout.toString());
