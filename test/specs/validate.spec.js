@@ -66,7 +66,6 @@ describe("swagger-cli validate", () => {
 
     expect(output.stdout).to.have.lengthOf(0);
     expect(output.status).to.equal(1);
-    expect(output.stderr).to.include("Error resolving $ref pointer ");
     expect(output.stderr).to.include('Token "definitions" does not exist.\n');
   });
 
