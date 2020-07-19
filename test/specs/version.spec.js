@@ -9,7 +9,7 @@ describe("swagger-cli --version", () => {
   it("should output the version number and exit 0", () => {
     let output = helper.run("--version");
 
-    expect(output.stderr).to.be.empty;
+    expect(output.stderr).to.have.lengthOf(0);
     expect(output.status).to.equal(0);
     expect(output.stdout).to.equal(manifest.version + "\n");
   });
@@ -17,7 +17,7 @@ describe("swagger-cli --version", () => {
   it('should work with the "-v" alias', () => {
     let output = helper.run("-v");
 
-    expect(output.stderr).to.be.empty;
+    expect(output.stderr).to.have.lengthOf(0);
     expect(output.status).to.equal(0);
     expect(output.stdout).to.equal(manifest.version + "\n");
   });
