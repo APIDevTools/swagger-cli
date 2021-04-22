@@ -77,7 +77,7 @@ There is a useful Python tool called [pre-commit](https://pre-commit.com/) that 
 
 ```
 -   repo: https://github.com/APIDevTools/swagger-cli
-    rev: v2.2.1
+    rev: v4.0.4
     hooks:
     - id: swagger-validation
       args: ["validate", "<path to root swagger>"]
