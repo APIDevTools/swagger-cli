@@ -96,6 +96,10 @@ function parseArgs () {
     .option("h", {
       alias: "help",
       type: "boolean",
+    })
+    .option("j", {
+      alias: "json",
+      type: "boolean",
     });
 
   // Show the version number on "--version" or "-v"
@@ -123,6 +127,7 @@ function parseArgs () {
       wrap: args.wrap || Infinity,
       debug: args.debug,
       help: args.help,
+      json: args.json,
     }
   };
 
@@ -145,10 +150,19 @@ function parseArgs () {
 async function validate (file, options) {
   try {
     await api.validate(file, options);
-    console.log(file, "is valid");
+    if (options.json) {
+      console.log(JSON.stringify({ valid: true, error: [] }));
+    } else {
+      console.log(file, "is valid");
+    }
   }
   catch (error) {
-    errorHandler(error);
+    if (options.json) {
+      console.error(JSON.stringify({ valid: false, error }));
+      process.exit(1);
+    } else {
+      errorHandler(error);
+    }
   }
 }
 

@@ -13,6 +13,21 @@ describe("swagger-cli validate", () => {
     expect(output.stdout).to.equal("test/files/valid/single-file/api.yaml is valid\n");
   });
 
+  it("should validate a single-file API (JSON output)", () => {
+    let output = helper.run(
+      "--json",
+      "validate",
+      "test/files/valid/single-file/api.yaml"
+    );
+
+    expect(output.stderr).to.have.lengthOf(0);
+    expect(output.status).to.equal(0);
+    expect(JSON.parse(output.stdout)).to.deep.equal({
+      valid: true,
+      error: [],
+    });
+  });
+
   it("should validate a multi-file API", () => {
     let output = helper.run("validate", "test/files/valid/multi-file/api.yaml");
 
@@ -51,6 +66,25 @@ describe("swagger-cli validate", () => {
     expect(output.stdout).to.have.lengthOf(0);
     expect(output.status).to.equal(1);
     expect(output.stderr).to.equal("Validation failed. /paths/people/{name}/get is missing path parameter(s) for {name}\n");
+  });
+
+  it("should fail validation against the Swagger 2.0 specification (JSON output)", () => {
+    let output = helper.run(
+      "--json",
+      "validate",
+      "test/files/invalid/spec/api.yaml"
+    );
+
+    expect(output.stdout).to.have.lengthOf(0);
+    expect(output.status).to.equal(1);
+
+    const parsed = JSON.parse(output.stderr);
+    expect(parsed.valid).to.be.false;
+    expect(parsed.error.message).to.equal(
+      "Validation failed. /paths/people/{name}/get is missing path parameter(s) for {name}"
+    );
+    expect(parsed.error.name).to.equal("SyntaxError");
+    expect(parsed.error.inner).to.be.undefined;
   });
 
   it("should skip validation against the Swagger 2.0 specification", () => {
