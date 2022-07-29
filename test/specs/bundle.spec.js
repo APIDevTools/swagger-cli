@@ -323,4 +323,42 @@ describe("swagger-cli bundle", () => {
     expect(output.stderr).to.include("at ReadFileContext");
   });
 
+
+  it("should fail if multiple input files are given in arguments", () => {
+    let output = helper.run("bundle", "test/files/valid/single-file/api.bundled.json",
+      "test/files/valid/single-file/api.yaml");
+
+    expect(output.stdout).to.have.lengthOf(0);
+    expect(output.status).to.equal(1);
+    expect(output.stderr).to.include("Only one file path allowed for 'bundle' command.");
+  });
+
+  it("should fail if file path pattern matches multiple files", () => {
+    let output = helper.run("bundle", "test/files/valid/single-file/api.bundled*.json");
+
+    expect(output.stdout).to.have.lengthOf(0);
+    expect(output.status).to.equal(1);
+    expect(output.stderr).to.include("Only one file path allowed for 'bundle' command.");
+  });
+
+
+  it("should output if file path is a matching pattern", () => {
+    let output = helper.run("bundle", "test/files/valid/single-file/api.bundled.m*.yaml");
+    let expectedOutput = readFile("test/files/valid/single-file/api.bundled.json");
+
+    expect(output.stderr).to.have.lengthOf(0);
+    expect(output.status).to.equal(0);
+    expect(output.stdout).to.equal(expectedOutput + "\n");
+  });
+
+
+  it("should fail if invalid output type is given", () => {
+    let output = helper.run("bundle", "-t", "txt", "test/files/valid/single-file/api.bundled.yaml");
+
+    expect(output.stdout).to.have.lengthOf(0);
+    expect(output.status).to.equal(2);
+    expect(output.stderr).to.include("Error: type value ");
+  });
+
+
 });

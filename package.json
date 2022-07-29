@@ -73,6 +73,7 @@
   "dependencies": {
     "@apidevtools/swagger-parser": "^10.0.1",
     "chalk": "^4.1.0",
+    "glob": "^7.1.6",
     "js-yaml": "^3.14.0",
     "yargs": "^15.4.1"
   }

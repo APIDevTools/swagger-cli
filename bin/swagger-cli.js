@@ -3,15 +3,16 @@
 
 const yargs = require("yargs");
 const chalk = require("chalk");
+const glob = require("glob");
 const api = require("../");
 const helpText = require("./help-text.json");
 
 const validTypeOptions = ["json", "yaml"];
 
-(function main () {
+(async function main () {
   let args = parseArgs();
   let command = args.command;
-  let file = args.file;
+  let files = args.files;
   let options = args.options;
 
   if (options.debug) {
@@ -31,19 +32,26 @@ const validTypeOptions = ["json", "yaml"];
     console.log(getHelpText(command));
     process.exit(0);
   }
-  else if (command === "validate" && file) {
-    // Validate an API
-    validate(file, options);
+  else if (command === "validate" && files && files.length > 0) {
+    const paths = getPaths(command, files);
+    for (const path of paths) {
+      // Validate an API
+      await validate(path, options);
+    }
   }
-  else if (command === "bundle" && file) {
-    // Bundle a multi-file API
-    bundle(file, options);
+  else if (command === "bundle" && files && files.length > 0) {
+    const paths = getPaths(command, files);
+    if (paths.length === 1) {
+      // Bundle a multi-file API
+      bundle(paths[0], options);
+    }
+    else {
+      invalidArgsError(command, "Only one file path allowed for 'bundle' command.");
+    }
+
   }
   else {
-    // Invalid args.  Show help text and exit with non-zero
-    console.error("Error: Invalid arguments\n");
-    console.error(getHelpText(command));
-    process.exit(1);
+    invalidArgsError(command);
   }
 }());
 
@@ -112,7 +120,7 @@ function parseArgs () {
   // Normalize the parsed arguments
   let parsed = {
     command: args._[0],
-    file: args._[1],
+    files: args._.slice(1),  // take the remaining arguments as file paths array
     options: {
       schema: args.schema,
       spec: args.spec,
@@ -131,6 +139,40 @@ function parseArgs () {
   }
 
   return parsed;
+}
+
+/**
+ * For each given file as argument run glob pattern match on it and collect path of actual files
+ *
+ * @param {string} command name from cli
+ * @param {Array<string>} files array from cli
+ * @returns {Array<string>} list of paths found, can be empty
+ */
+function getPaths (command, files) {
+  let paths = [];
+  files.forEach(file => {
+    const matches = glob.sync(file);
+    if (matches.length === 0) {
+      invalidArgsError(command, `No file found for ${file}`);
+    }
+    else { paths.push(...matches); }
+  });
+
+  return paths;
+}
+
+/**
+ * Helper function to throw error with the given command and message. It then shows the help menu of the cli and exits
+ * with status code 1
+ *
+ * @param {string} command
+ * @param {string} message
+ */
+function invalidArgsError (command, message = null) {
+  // Invalid args.  Show help text and exit with non-zero
+  console.error(`Error: Invalid arguments${message ? ". " + message : ""}\n`);
+  console.error(getHelpText(command));
+  process.exit(1);
 }
 
 
