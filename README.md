@@ -1,17 +1,12 @@
 Swagger/OpenAPI CLI
 ============================
 
-[![Cross-Platform Compatibility](https://apitools.dev/img/badges/os-badges.svg)](https://github.com/APIDevTools/swagger-cli/actions)
-[![Build Status](https://github.com/APIDevTools/swagger-cli/workflows/CI-CD/badge.svg?branch=master)](https://github.com/APIDevTools/swagger-cli/actions)
-
-[![Dependencies](https://david-dm.org/APIDevTools/swagger-cli.svg)](https://david-dm.org/APIDevTools/swagger-cli)
-[![Coverage Status](https://coveralls.io/repos/github/APIDevTools/swagger-cli/badge.svg?branch=master)](https://coveralls.io/github/APIDevTools/swagger-cli?branch=master)
-
 [![npm](https://img.shields.io/npm/v/@apidevtools/swagger-cli.svg)](https://www.npmjs.com/package/@apidevtools/swagger-cli)
 [![License](https://img.shields.io/npm/l/@apidevtools/swagger-cli.svg)](LICENSE)
 [![Buy us a tree](https://img.shields.io/badge/Treeware-%F0%9F%8C%B3-lightgreen)](https://plant.treeware.earth/APIDevTools/swagger-cli)
 
 
+> ⚠️ Swagger CLI has been deprecated, due to the maintenance burnden of trying to keep up with expectations of a huge userbase with little to no pull requests or support. [Redocly CLI](https://redocly.com/redocly-cli/) covers all of the same functionality, and has more advanced linting with custom rules, and we highly recommend using that instead. They have conveniently provided a [migration guide](https://redocly.com/docs/cli/guides/migrate-from-swagger-cli/) for existing Swagger CLI users. Read the review of [Redocly CLI from APIs You Won't Hate](https://apisyouwonthate.com/blog/redocly-cli/).
 
 Features
 --------------------------
