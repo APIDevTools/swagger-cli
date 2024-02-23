@@ -1,0 +1,43 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: A very simple API
+paths:
+  /people:
+    get:
+      summary: This is a single-line string
+      responses:
+        '200':
+          description: |
+            This
+            is
+            a
+            multi-line
+            string
+          schema:
+            description: This is a really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really long string
+            type: array
+            items:
+              $ref: '#/definitions/person'
+definitions:
+  person:
+    title: Person
+    type: object
+    required:
+      - name
+    properties:
+      name:
+        type: string
+        minLength: 1
+      birthdate:
+        type: string
+        format: date
+      gender:
+        type: string
+        enum:
+          - male
+          - female
+      height:
+        type: number
+      weight:
+        type: number

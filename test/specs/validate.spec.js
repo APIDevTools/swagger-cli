@@ -88,4 +88,43 @@ describe("swagger-cli validate", () => {
     expect(output.stderr).to.include("at ReadFileContext");
   });
 
+
+  it("should fail if one of the file does not exists in files argument list", () => {
+    let output = helper.run("validate", "test/files/valid/single-file/api-not-found.yaml",
+      "test/files/valid/single-file/api.yaml");
+
+    expect(output.stdout).to.have.lengthOf(0);
+    expect(output.status).to.equal(1);
+    expect(output.stderr).to.contain("No file found for test/files/valid/single-file/api-not-found.yaml");
+  });
+
+  it("should fail if pattern does not match any file", () => {
+    let output = helper.run("validate", "test/files/valid/single-file/api-*.yaml",
+      "test/files/valid/single-file/api.yaml");
+
+    expect(output.stdout).to.have.lengthOf(0);
+    expect(output.status).to.equal(1);
+    expect(output.stderr).to.contain("No file found for test/files/valid/single-file/api-*.yaml");
+  });
+
+
+  it("should validate if file path is a matching pattern", () => {
+    let output = helper.run("validate", "test/files/valid/single-file/api.bundled.m*.yaml");
+
+    expect(output.stderr).to.have.lengthOf(0);
+    expect(output.status).to.equal(0);
+    expect(output.stdout).to.equal("test/files/valid/single-file/api.bundled.match.yaml is valid\n");
+  });
+
+  it("should validate multiple file paths argument", () => {
+    let output = helper.run("validate", "test/files/valid/single-file/api.yaml", "test/files/valid/multi-file/api.yaml",
+      "test/files/valid/single-file/api.bundled.m*.yaml");
+
+    expect(output.stderr).to.have.lengthOf(0);
+    expect(output.status).to.equal(0);
+    expect(output.stdout).to.contain("test/files/valid/single-file/api.yaml is valid\n");
+    expect(output.stdout).to.contain("test/files/valid/multi-file/api.yaml is valid\n");
+    expect(output.stdout).to.contain("test/files/valid/single-file/api.bundled.match.yaml is valid\n");
+  });
+
 });
